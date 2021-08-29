@@ -170,7 +170,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-08-29 14:41:48 / Modified: 17:06:06" itemprop="dateCreated datePublished" datetime="2021-08-29T14:41:48+08:00">2021-08-29</time>
+              <time title="Created: 2021-08-29 14:41:48 / Modified: 17:40:23" itemprop="dateCreated datePublished" datetime="2021-08-29T14:41:48+08:00">2021-08-29</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -217,10 +217,8 @@
 <li><p>如果没有安装</p>
 <p>官网下载地址：<a target="_blank" rel="noopener" href="https://git-scm.com/">https://git-scm.com/</a></p>
 </li>
-<li><p>为GitHub配置SSH密匙</p>
-<p>参见博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u013778905/article/details/83501204">GitHub如何配置SSH Key</a></p>
-</li>
 </ul>
+<h3 id="为GitHub配置SSH密匙"><a href="#为GitHub配置SSH密匙" class="headerlink" title="为GitHub配置SSH密匙"></a>为GitHub配置SSH密匙</h3><p>  参见博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u013778905/article/details/83501204">GitHub如何配置SSH Key</a></p>
 <h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
 
 <h2 id="新建博客"><a href="#新建博客" class="headerlink" title="新建博客"></a>新建博客</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;folder&gt; </span><br><span class="line">cd &lt;folder&gt; </span><br><span class="line">npm install </span><br></pre></td></tr></table></figure>
@@ -230,7 +228,11 @@
 <h2 id="关联-Hexo-与-GitHub-Pages"><a href="#关联-Hexo-与-GitHub-Pages" class="headerlink" title="关联 Hexo 与 GitHub Pages"></a>关联 Hexo 与 GitHub Pages</h2><p>在_config.yml文件中找到Deployment，修改如下：</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:yourgithubID/yourgithubID.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">main</span></span><br></pre></td></tr></table></figure>
 
-<p>==高亮==</p>
+<p><mark>注意：</mark>  </p>
+<blockquote>
+<p>从 2020 年 10 月 1 日开始，GitHub 上的所有新库都将用中性词「main」命名，取代原来的「master」</p>
+</blockquote>
+<p><mark>因此，现在branch应该填main而不是master。</mark></p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>[1] <a target="_blank" rel="noopener" href="https://turlingxian.github.io/hexo-github-io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA.html">hexo+github.io博客搭建</a></p>
 <p>[2] <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1622563">Windows10安装Hexo教程</a></p>
 
