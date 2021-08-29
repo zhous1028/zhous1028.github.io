@@ -170,7 +170,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-08-29 14:41:48 / Modified: 19:52:04" itemprop="dateCreated datePublished" datetime="2021-08-29T14:41:48+08:00">2021-08-29</time>
+              <time title="Created: 2021-08-29 14:41:48 / Modified: 20:01:37" itemprop="dateCreated datePublished" datetime="2021-08-29T14:41:48+08:00">2021-08-29</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -243,10 +243,19 @@
 <li>文章写好之后通过<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean <span class="comment"># 删除旧的 public 文件  </span></span><br><span class="line">hexo g -d  <span class="comment"># 生成新的 public 文件，并提交到GitHub Pages，g表示generate，d表示deploy，hexo g 和 hexo d 的简写</span></span><br></pre></td></tr></table></figure>
 推送到GitHub Pages，有时候需要等几分钟网页才会更新改动</li>
 </ul>
-<h2 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h2><h2 id="常见问题和解决方法"><a href="#常见问题和解决方法" class="headerlink" title="常见问题和解决方法"></a>常见问题和解决方法</h2><ul>
+<h2 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h2><ul>
+<li>我最喜欢的主题 <a target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-theme-next">NexT</a>  <ul>
+<li>在themes文件夹下打开gitbash，克隆主题<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/theme-next/hexo-theme-next.git</span><br></pre></td></tr></table></figure></li>
+<li>更改_config.yml<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line"><span class="comment"># theme: landscape</span></span><br><span class="line">theme: hexo-theme-<span class="built_in">next</span></span><br></pre></td></tr></table></figure></li>
+<li>推送到GitHub Pages</li>
+</ul>
+</li>
+<li>更多主题 <a target="_blank" rel="noopener" href="https://hexo.io/themes/">hexo themes</a>  </li>
+</ul>
+<h2 id="常见问题和解决方法"><a href="#常见问题和解决方法" class="headerlink" title="常见问题和解决方法"></a>常见问题和解决方法</h2><ul>
 <li>执行 <code>hexo d</code> 报错：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ERROR Deployer not found: git</span><br></pre></td></tr></table></figure>
 原因：没安装hexo-deployer-git插件<br>解决方法：在站点目录下安装插件<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li>
-<li>github.io页面显示master分支下的内容而非main分支下的内容<br>原因：_config.yml中Deployment下的branch设置为了master而不是main</li>
+<li>github.io 页面显示 master 分支下的内容而非 main 分支下的内容<br>原因：_config.yml 中 Deployment 下的 branch 设置为了 master 而不是 main</li>
 </ul>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>[1] <a target="_blank" rel="noopener" href="https://turlingxian.github.io/hexo-github-io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA.html">hexo+github.io博客搭建</a><br>[2] <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1622563">Windows10安装Hexo教程</a><br>[3] <a target="_blank" rel="noopener" href="https://www.jiqizhixin.com/articles/2020-09-21-10">10月1日之后，你新建的GitHub库默认分支不叫「master」了</a><br>[4] <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/5095b1e81d40">hexo的一些使用和配置
 </a><br>[5] <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_21808961/article/details/84476504">hexo d命令报错 ERROR Deployer not found: git</a>  </p>
