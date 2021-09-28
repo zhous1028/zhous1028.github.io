@@ -172,7 +172,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-09-28 14:03:16 / Modified: 15:39:00" itemprop="dateCreated datePublished" datetime="2021-09-28T14:03:16+08:00">2021-09-28</time>
+              <time title="Created: 2021-09-28 14:03:16 / Modified: 15:49:05" itemprop="dateCreated datePublished" datetime="2021-09-28T14:03:16+08:00">2021-09-28</time>
             </span>
 
           
@@ -195,18 +195,18 @@
 <li>解压VMwareTools的命令</li>
 <li>安装vmware-install.pl过程中的选择</li>
 </ul>
-<h2 id="解决步骤"><a href="#解决步骤" class="headerlink" title="解决步骤"></a>解决步骤</h2><h3 id="一、设置共享文件夹"><a href="#一、设置共享文件夹" class="headerlink" title="一、设置共享文件夹"></a>一、设置共享文件夹</h3><p>虚拟机 → 设置 → 选项 → 共享文件夹 → 总是启用 → 添加 → 选择主机路径 → 确定</p>
+<h2 id="解决步骤"><a href="#解决步骤" class="headerlink" title="解决步骤"></a>解决步骤</h2><h3 id="设置共享文件夹"><a href="#设置共享文件夹" class="headerlink" title="设置共享文件夹"></a>设置共享文件夹</h3><p>虚拟机 → 设置 → 选项 → 共享文件夹 → 总是启用 → 添加 → 选择主机路径 → 确定</p>
 <p><img src="https://raw.githubusercontent.com/zhous1028/pictures/blog/VMShareFolder.png" alt="set VM share folder"></p>
 <p>假如此时能在 /mnt/hgfs/ 路径下找到设置的共享文件夹，则说明设置成功，无需再进行以下操作。</p>
 <p>但根据我的经验，一般第一次会设置成功，但重启后就找不到了，所以如果重启后找不到设置的共享文件夹了，则需要重装VM tools，具体步骤如下：</p>
-<h3 id="二、解决无法安装-VMware-Tools"><a href="#二、解决无法安装-VMware-Tools" class="headerlink" title="二、解决无法安装 VMware Tools"></a>二、解决无法安装 VMware Tools</h3><p>虚拟机 → 安装 VMware Tools</p>
+<h3 id="解决无法安装-VMware-Tools"><a href="#解决无法安装-VMware-Tools" class="headerlink" title="解决无法安装 VMware Tools"></a>解决无法安装 VMware Tools</h3><p>虚拟机 → 安装 VMware Tools</p>
 <p><img src="https://raw.githubusercontent.com/zhous1028/pictures/blog/vmtools.png" alt="VMware Tools"></p>
 <p>如果发现 VMware Tools 是灰色的，则需进行以下操作：</p>
 <p><img src="https://raw.githubusercontent.com/zhous1028/pictures/blog/vmtools_1.png" alt="add vmtools"></p>
 <p>即：将 CD/DVD (SATA)、CD/DVD 2 (SATA)和软盘都设置为“启动时连接”，如果找不到CD/DVD 2 (SATA)和软盘，则需要先自己添加。</p>
 <p>重启虚拟机，此时就可以正常安装VMware Tools了</p>
 <p><img src="https://raw.githubusercontent.com/zhous1028/pictures/blog/vmtools_2.png" alt="vmtools2"></p>
-<h3 id="三、安装VMware-Tools"><a href="#三、安装VMware-Tools" class="headerlink" title="三、安装VMware Tools"></a>三、安装VMware Tools</h3><ul>
+<h3 id="安装VMware-Tools"><a href="#安装VMware-Tools" class="headerlink" title="安装VMware Tools"></a>安装VMware Tools</h3><ul>
 <li><p>双击桌面上的DVD文件</p>
 <p>   <img src="https://raw.githubusercontent.com/zhous1028/pictures/blog/dvd.png" alt="dvd"></p>
 </li>
