@@ -147,6 +147,194 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/06/%E8%BD%AF%E8%80%83%E5%88%9D%E7%BA%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="zhoushuang">
+      <meta itemprop="description" content="不要追求大而全，先做一个简单版本">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhou Shuang">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/10/06/%E8%BD%AF%E8%80%83%E5%88%9D%E7%BA%A7/" class="post-title-link" itemprop="url">软考初级</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-10-06 13:24:28 / Modified: 15:20:15" itemprop="dateCreated datePublished" datetime="2021-10-06T13:24:28+08:00">2021-10-06</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="机器数和真值"><a href="#机器数和真值" class="headerlink" title="机器数和真值"></a>机器数和真值</h2><p>在学习原码、补码和反码之前，需要先了解机器数和真值的概念。</p>
+<h3 id="机器数"><a href="#机器数" class="headerlink" title="机器数"></a>机器数</h3><p>一个数在计算机中的二进制表示形式，叫做这个数的机器数。机器数是<strong>带符号</strong>的，在计算机中用一个数的最高位存放符号，正数为0，负数为1。<br>比如，十进制中的数 +3 ，计算机字长为8位，转换成二进制数就是 0000 00011，如果是 -3 ，就是 1000 0011。<br>那么，这里的 0000 0011 和 1000 0011 就是机器数。</p>
+<h3 id="真值"><a href="#真值" class="headerlink" title="真值"></a>真值</h3><p>因为第一位是符号位，所以机器数的形式值就不等于真正的数值。例如上面的有符号数 1000 0011 ，其最高位1表示负，其真正数值为 -3 ，而不是形式值 131（1000 0011转换为十进制为131）。<br>所以，为区别起见，将带符号位的机器数对应的真正的数值称为机器数的真值。例如，0000 0011 的真值为 +000 0011 = +3，1000 0011 的真值为 -000 0011 = -3.</p>
+<h2 id="原码、反码、补码"><a href="#原码、反码、补码" class="headerlink" title="原码、反码、补码"></a>原码、反码、补码</h2><p>在探求机器为何要使用补码之前，我们要先了解原码、补码和反码的概念。对于一个数，计算机要使用一定的编码方式进行存储。原码、反码和补码是机器存储一个具体数字的编码方式。</p>
+<h3 id="原码"><a href="#原码" class="headerlink" title="原码"></a>原码</h3><p>原码就是符号位加上真值的绝对值，其形式与机器数相同，即用最高位表示符号，其余位表示值。以8位二进制为例：</p>
+<ul>
+<li>[+1]<sub>原</sub> = 0000 0001</li>
+<li>[ -1]<sub>原</sub> = 1000 0001</li>
+</ul>
+<p>因为第一位是符号位，所以8位二进制数的表示范围为：</p>
+<ul>
+<li>[1111 1111, 0111 1111] ==&gt; [-127, 127]</li>
+</ul>
+<h3 id="反码"><a href="#反码" class="headerlink" title="反码"></a>反码</h3><p>反码的表示方法为：</p>
+<ul>
+<li>正数的反码是其本身</li>
+<li>负数的反码是在其原码的基础上，符号位不变，其余各位取反。</li>
+<li>[+1]<sub>原</sub> = [+1]<sub>反</sub> = 0000 0001</li>
+<li>[-1]<sub>原</sub> = 1000 0001</li>
+<li>[-1]<sub>反</sub> = 1111 1110</li>
+</ul>
+<h3 id="补码"><a href="#补码" class="headerlink" title="补码"></a>补码</h3><p>补码的表示方法为：</p>
+<ul>
+<li>正数的补码是其本身</li>
+<li>负数的补码是在其原码的基础上，符号位不变，其余各位取反，最后一位+1（即在反码的基础上+1)</li>
+<li>[+1]<sub>原</sub> = [+1]<sub>反</sub> = [+1]<sub>补</sub> = 0000 0001</li>
+<li>[-1]<sub>原</sub> = 1000 0001</li>
+<li>[-1]<sub>反</sub> = 1111 1110</li>
+<li>[-1]<sub>补</sub> = 1111 1111</li>
+</ul>
+<h3 id="为何要使用原码、反码和补码"><a href="#为何要使用原码、反码和补码" class="headerlink" title="为何要使用原码、反码和补码"></a>为何要使用原码、反码和补码</h3><h4 id="使用反码可以通过加法计算减法，让符号位参与运算，简化计算机电路基础设计"><a href="#使用反码可以通过加法计算减法，让符号位参与运算，简化计算机电路基础设计" class="headerlink" title="使用反码可以通过加法计算减法，让符号位参与运算，简化计算机电路基础设计"></a>使用反码可以通过加法计算减法，让符号位参与运算，简化计算机电路基础设计</h4><ul>
+<li>1 - 1 = 1 + (-1) = [0000 0001]<sub>原</sub> + [1000 0001]<sub>原</sub> = [0000 0001]<sub>反</sub> + [1111 1110]<sub>反</sub> = [1111 1111]<sub>反</sub> = [1000 0000]<sub>原</sub> = -0</li>
+</ul>
+<h4 id="使用补码可以解决0的符号，和用-0000-0000-原、-1000-0000-原两个编码表示0的问题"><a href="#使用补码可以解决0的符号，和用-0000-0000-原、-1000-0000-原两个编码表示0的问题" class="headerlink" title="使用补码可以解决0的符号，和用[0000 0000]原、[1000 0000]原两个编码表示0的问题"></a>使用补码可以解决0的符号，和用[0000 0000]<sub>原</sub>、[1000 0000]<sub>原</sub>两个编码表示0的问题</h4><ul>
+<li>1 - 1 = 1 + (-1) = [0000 0001]<sub>补</sub> + [1111 1111]<sub>补</sub> = [0000 0000]<sub>补</sub> = [0000 0000]<sub>原</sub> = 0</li>
+</ul>
+<p>这样0用[0000 0000]<sub>补</sub>表示，而-0就不存在了，而且可以用[1000 0000]<sub>补</sub>表示-128.</p>
+<ul>
+<li>-1 - 127 = -1 + (-127) = [1111 1111]<sub>补</sub> + [1000 0001]<sub>补</sub> = [1000 0000]<sub>补</sub></li>
+</ul>
+<p>-1 - 127 的结果应该是-128，在补码运算结果中，[1000 0000]<sub>补</sub>就是-128。但是，由于是使用原来-0的补码来表示-128，所以 <strong>-128并没有原码和反码表示</strong>（对-128的补码表示[1000 0000]补出来的原码是[0000 0000]<sub>原</sub>，这是不对的）。</p>
+<p>使用补码，不仅修复了0的符号以及两个编码表示问题，还能够多表示一个最低数。因此，对于8位二进制数，使用原码和反码，其表示范围是[-127, 127]，而使用补码，其范围为[-128, 127]。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>正数的原码=反码=补码</li>
+<li>负数的反码=原码符号位不变，其余各位取反</li>
+<li>负数的补码=原码符号位不变，其余各位取反，且最低位+1</li>
+<li>引入反码是为了将减法统一为加法，让符号位参与运算，简化电路设计，但这样引入了-0和用两个编码表示0的问题</li>
+<li>引入补码是为了解决-0和两个编码表示0的问题，且将表示范围扩展了一位最低位</li>
+<li>对于8位二进制数，原码和反码表示范围：[-127, 127]，补码表示范围：[-128, 127]</li>
+</ul>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><ul>
+<li>在<strong>补码</strong>中，0的表示是惟一的，以8位为例<ul>
+<li>原码：0000 0000 或者 1000 0000</li>
+<li>反码：0000 0000 或者 1111 1111</li>
+<li>补码：0000 0000 或者 (1) 0000 0000 都是 0000 0000</li>
+</ul>
+</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>[1] <a target="_blank" rel="noopener" href="https://www.cnblogs.com/wqbin/p/11142873.html">原码、补码和反码</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/02/%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E7%9B%B8%E5%85%B3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="zhoushuang">
+      <meta itemprop="description" content="不要追求大而全，先做一个简单版本">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhou Shuang">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/10/02/%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E7%9B%B8%E5%85%B3/" class="post-title-link" itemprop="url">视频剪辑相关</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-10-02 16:10:36" itemprop="dateCreated datePublished" datetime="2021-10-02T16:10:36+08:00">2021-10-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-10-06 13:23:48" itemprop="dateModified" datetime="2021-10-06T13:23:48+08:00">2021-10-06</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><ul>
+<li>H264是视频编码格式</li>
+<li>AAC是音频编码格式</li>
+<li>RARBG是一个BT网站名</li>
+<li>720P和1080P混剪：输出720P的片子看不出差别，输出1080P的片子720P素材会有“马赛克”</li>
+</ul>
+<h2 id="音频处理"><a href="#音频处理" class="headerlink" title="音频处理"></a>音频处理</h2><h3 id="让结尾处音乐逐渐消失"><a href="#让结尾处音乐逐渐消失" class="headerlink" title="让结尾处音乐逐渐消失"></a>让结尾处音乐逐渐消失</h3><p>窗口 → 效果 → 音频转换 → 淡入淡出 → 指数型淡出</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/28/Solve-Can-t-Find-Shared-Folder-in-Ubuntu-VM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -723,7 +911,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
