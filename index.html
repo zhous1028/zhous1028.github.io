@@ -161,7 +161,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/10/06/%E8%BD%AF%E8%80%83%E5%88%9D%E7%BA%A7/" class="post-title-link" itemprop="url">软考初级</a>
+            <a href="/2021/10/06/%E8%BD%AF%E8%80%83%E5%88%9D%E7%BA%A7/" class="post-title-link" itemprop="url">软考初级-原码、反码和补码</a>
         </h2>
 
         <div class="post-meta">
@@ -170,10 +170,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-10-06 13:24:28 / Modified: 15:20:15" itemprop="dateCreated datePublished" datetime="2021-10-06T13:24:28+08:00">2021-10-06</time>
+              <time title="Created: 2021-10-06 13:24:28" itemprop="dateCreated datePublished" datetime="2021-10-06T13:24:28+08:00">2021-10-06</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-10-07 10:36:52" itemprop="dateModified" datetime="2021-10-07T10:36:52+08:00">2021-10-07</time>
+              </span>
 
           
 
@@ -244,6 +250,44 @@
 </ul>
 </li>
 </ul>
+<h2 id="逻辑电路中的逻辑表达式"><a href="#逻辑电路中的逻辑表达式" class="headerlink" title="逻辑电路中的逻辑表达式"></a>逻辑电路中的逻辑表达式</h2><table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left"></th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">与</td>
+<td align="left">and</td>
+<td align="left">A + B</td>
+</tr>
+<tr>
+<td align="left">或</td>
+<td align="left">or</td>
+<td align="left">A · B</td>
+</tr>
+<tr>
+<td align="left">异或</td>
+<td align="left">eor</td>
+<td align="left">A ⊕ B</td>
+</tr>
+</tbody></table>
+<h2 id="某计算机内存按字节编址，内存地址区域从44000H到6BFFFH，共有（）K，若采用16K-x-4bit的SRAM芯片，构成该内存区域共需（）片"><a href="#某计算机内存按字节编址，内存地址区域从44000H到6BFFFH，共有（）K，若采用16K-x-4bit的SRAM芯片，构成该内存区域共需（）片" class="headerlink" title="某计算机内存按字节编址，内存地址区域从44000H到6BFFFH，共有（）K，若采用16K x 4bit的SRAM芯片，构成该内存区域共需（）片"></a>某计算机内存按字节编址，内存地址区域从44000H到6BFFFH，共有（）K，若采用16K x 4bit的SRAM芯片，构成该内存区域共需（）片</h2><ul>
+<li>内存按字节编址，意思是每个地址的内存单元可存放1Byte, 8bit数据</li>
+<li>44000H中的H表示16进制，因为16进制中的符号到F就为止了</li>
+<li>1K = 2<sup>10</sup> = 1024</li>
+<li>1KB = 1024B = 1024 x 8 bit</li>
+<li>6BFFFH - 44000H <strong>+ 1</strong>= 28000H = 2 x 16<sup>4</sup> + 8 x 16<sup>3</sup> = 2<sup>15</sup> x 5 = 2<sup>10</sup> x 2<sup>5</sup> x 5 = 32 x 5 K = 160K</li>
+<li>16K x 4bit 的SRAM芯片表示该芯片有16K个地址，每个地址的内存单元可存放4bit数据</li>
+<li>160K x 8bit / (16K x 4bit) = 20 片</li>
+</ul>
+<h2 id="CPU执行程序时，为了从内存读取指令，需要先将程序计数器（PC）的内存输送到地址总线上"><a href="#CPU执行程序时，为了从内存读取指令，需要先将程序计数器（PC）的内存输送到地址总线上" class="headerlink" title="CPU执行程序时，为了从内存读取指令，需要先将程序计数器（PC）的内存输送到地址总线上"></a>CPU执行程序时，为了从内存读取指令，需要先将程序计数器（PC）的内存输送到地址总线上</h2><ul>
+<li>程序计数器的作用是存储下一条将要执行的指令的地址。为了从内从中读取指令，需要首先将程序计数器的内容输送到地址总线上。</li>
+</ul>
+<h2 id="在多种存储管理方案中，解决内存碎片问题的是可重定位分区"><a href="#在多种存储管理方案中，解决内存碎片问题的是可重定位分区" class="headerlink" title="在多种存储管理方案中，解决内存碎片问题的是可重定位分区"></a>在多种存储管理方案中，解决内存碎片问题的是可重定位分区</h2><p>可重定位分区的基本思想是：移动所有已分配好的分区，使之成为连续区域。</p>
+<h2 id="虚拟存储器主要由磁盘和主存组成"><a href="#虚拟存储器主要由磁盘和主存组成" class="headerlink" title="虚拟存储器主要由磁盘和主存组成"></a>虚拟存储器主要由磁盘和主存组成</h2><p>虚拟存储器具有请求调入功能和置换功能，仅把作业的一部分装入主存便可运行作业，是能从逻辑上对主存容量进行扩充的一种虚拟存储器系统。其逻辑容量由主存和外存容量之和，以及CPU可寻址的范围来决定，其运行速度接近于主存速度，成本却比较低。可见，虚拟存储技术是一种性能非常优越的存储管理技术，故被广泛的应用于大中小型机器和微型机中。</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>[1] <a target="_blank" rel="noopener" href="https://www.cnblogs.com/wqbin/p/11142873.html">原码、补码和反码</a></p>
 
       

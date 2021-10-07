@@ -22,13 +22,13 @@
 
   <meta name="description" content="机器数和真值在学习原码、补码和反码之前，需要先了解机器数和真值的概念。 机器数一个数在计算机中的二进制表示形式，叫做这个数的机器数。机器数是带符号的，在计算机中用一个数的最高位存放符号，正数为0，负数为1。比如，十进制中的数 +3 ，计算机字长为8位，转换成二进制数就是 0000 00011，如果是 -3 ，就是 1000 0011。那么，这里的 0000 0011 和 1000 0011 就是机">
 <meta property="og:type" content="article">
-<meta property="og:title" content="软考初级">
+<meta property="og:title" content="软考初级-原码、反码和补码">
 <meta property="og:url" content="http://example.com/2021/10/06/%E8%BD%AF%E8%80%83%E5%88%9D%E7%BA%A7/index.html">
 <meta property="og:site_name" content="Zhou Shuang">
 <meta property="og:description" content="机器数和真值在学习原码、补码和反码之前，需要先了解机器数和真值的概念。 机器数一个数在计算机中的二进制表示形式，叫做这个数的机器数。机器数是带符号的，在计算机中用一个数的最高位存放符号，正数为0，负数为1。比如，十进制中的数 +3 ，计算机字长为8位，转换成二进制数就是 0000 00011，如果是 -3 ，就是 1000 0011。那么，这里的 0000 0011 和 1000 0011 就是机">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-06T05:24:28.000Z">
-<meta property="article:modified_time" content="2021-10-06T07:20:15.338Z">
+<meta property="article:modified_time" content="2021-10-07T02:36:52.739Z">
 <meta property="article:author" content="zhoushuang">
 <meta name="twitter:card" content="summary">
 
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>软考初级 | Zhou Shuang</title>
+  <title>软考初级-原码、反码和补码 | Zhou Shuang</title>
   
 
 
@@ -163,7 +163,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          软考初级
+          软考初级-原码、反码和补码
         </h1>
 
         <div class="post-meta">
@@ -172,10 +172,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-10-06 13:24:28 / Modified: 15:20:15" itemprop="dateCreated datePublished" datetime="2021-10-06T13:24:28+08:00">2021-10-06</time>
+              <time title="Created: 2021-10-06 13:24:28" itemprop="dateCreated datePublished" datetime="2021-10-06T13:24:28+08:00">2021-10-06</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-10-07 10:36:52" itemprop="dateModified" datetime="2021-10-07T10:36:52+08:00">2021-10-07</time>
+              </span>
 
           
 
@@ -246,6 +252,44 @@
 </ul>
 </li>
 </ul>
+<h2 id="逻辑电路中的逻辑表达式"><a href="#逻辑电路中的逻辑表达式" class="headerlink" title="逻辑电路中的逻辑表达式"></a>逻辑电路中的逻辑表达式</h2><table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left"></th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">与</td>
+<td align="left">and</td>
+<td align="left">A + B</td>
+</tr>
+<tr>
+<td align="left">或</td>
+<td align="left">or</td>
+<td align="left">A · B</td>
+</tr>
+<tr>
+<td align="left">异或</td>
+<td align="left">eor</td>
+<td align="left">A ⊕ B</td>
+</tr>
+</tbody></table>
+<h2 id="某计算机内存按字节编址，内存地址区域从44000H到6BFFFH，共有（）K，若采用16K-x-4bit的SRAM芯片，构成该内存区域共需（）片"><a href="#某计算机内存按字节编址，内存地址区域从44000H到6BFFFH，共有（）K，若采用16K-x-4bit的SRAM芯片，构成该内存区域共需（）片" class="headerlink" title="某计算机内存按字节编址，内存地址区域从44000H到6BFFFH，共有（）K，若采用16K x 4bit的SRAM芯片，构成该内存区域共需（）片"></a>某计算机内存按字节编址，内存地址区域从44000H到6BFFFH，共有（）K，若采用16K x 4bit的SRAM芯片，构成该内存区域共需（）片</h2><ul>
+<li>内存按字节编址，意思是每个地址的内存单元可存放1Byte, 8bit数据</li>
+<li>44000H中的H表示16进制，因为16进制中的符号到F就为止了</li>
+<li>1K = 2<sup>10</sup> = 1024</li>
+<li>1KB = 1024B = 1024 x 8 bit</li>
+<li>6BFFFH - 44000H <strong>+ 1</strong>= 28000H = 2 x 16<sup>4</sup> + 8 x 16<sup>3</sup> = 2<sup>15</sup> x 5 = 2<sup>10</sup> x 2<sup>5</sup> x 5 = 32 x 5 K = 160K</li>
+<li>16K x 4bit 的SRAM芯片表示该芯片有16K个地址，每个地址的内存单元可存放4bit数据</li>
+<li>160K x 8bit / (16K x 4bit) = 20 片</li>
+</ul>
+<h2 id="CPU执行程序时，为了从内存读取指令，需要先将程序计数器（PC）的内存输送到地址总线上"><a href="#CPU执行程序时，为了从内存读取指令，需要先将程序计数器（PC）的内存输送到地址总线上" class="headerlink" title="CPU执行程序时，为了从内存读取指令，需要先将程序计数器（PC）的内存输送到地址总线上"></a>CPU执行程序时，为了从内存读取指令，需要先将程序计数器（PC）的内存输送到地址总线上</h2><ul>
+<li>程序计数器的作用是存储下一条将要执行的指令的地址。为了从内从中读取指令，需要首先将程序计数器的内容输送到地址总线上。</li>
+</ul>
+<h2 id="在多种存储管理方案中，解决内存碎片问题的是可重定位分区"><a href="#在多种存储管理方案中，解决内存碎片问题的是可重定位分区" class="headerlink" title="在多种存储管理方案中，解决内存碎片问题的是可重定位分区"></a>在多种存储管理方案中，解决内存碎片问题的是可重定位分区</h2><p>可重定位分区的基本思想是：移动所有已分配好的分区，使之成为连续区域。</p>
+<h2 id="虚拟存储器主要由磁盘和主存组成"><a href="#虚拟存储器主要由磁盘和主存组成" class="headerlink" title="虚拟存储器主要由磁盘和主存组成"></a>虚拟存储器主要由磁盘和主存组成</h2><p>虚拟存储器具有请求调入功能和置换功能，仅把作业的一部分装入主存便可运行作业，是能从逻辑上对主存容量进行扩充的一种虚拟存储器系统。其逻辑容量由主存和外存容量之和，以及CPU可寻址的范围来决定，其运行速度接近于主存速度，成本却比较低。可见，虚拟存储技术是一种性能非常优越的存储管理技术，故被广泛的应用于大中小型机器和微型机中。</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>[1] <a target="_blank" rel="noopener" href="https://www.cnblogs.com/wqbin/p/11142873.html">原码、补码和反码</a></p>
 
     </div>
@@ -324,7 +368,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E6%95%B0%E5%92%8C%E7%9C%9F%E5%80%BC"><span class="nav-number">1.</span> <span class="nav-text">机器数和真值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E6%95%B0"><span class="nav-number">1.1.</span> <span class="nav-text">机器数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9C%9F%E5%80%BC"><span class="nav-number">1.2.</span> <span class="nav-text">真值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">原码、反码、补码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%A0%81"><span class="nav-number">2.1.</span> <span class="nav-text">原码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E7%A0%81"><span class="nav-number">2.2.</span> <span class="nav-text">反码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A5%E7%A0%81"><span class="nav-number">2.3.</span> <span class="nav-text">补码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BD%95%E8%A6%81%E4%BD%BF%E7%94%A8%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E5%92%8C%E8%A1%A5%E7%A0%81"><span class="nav-number">2.4.</span> <span class="nav-text">为何要使用原码、反码和补码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%8F%8D%E7%A0%81%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87%E5%8A%A0%E6%B3%95%E8%AE%A1%E7%AE%97%E5%87%8F%E6%B3%95%EF%BC%8C%E8%AE%A9%E7%AC%A6%E5%8F%B7%E4%BD%8D%E5%8F%82%E4%B8%8E%E8%BF%90%E7%AE%97%EF%BC%8C%E7%AE%80%E5%8C%96%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.4.1.</span> <span class="nav-text">使用反码可以通过加法计算减法，让符号位参与运算，简化计算机电路基础设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%A1%A5%E7%A0%81%E5%8F%AF%E4%BB%A5%E8%A7%A3%E5%86%B30%E7%9A%84%E7%AC%A6%E5%8F%B7%EF%BC%8C%E5%92%8C%E7%94%A8-0000-0000-%E5%8E%9F%E3%80%81-1000-0000-%E5%8E%9F%E4%B8%A4%E4%B8%AA%E7%BC%96%E7%A0%81%E8%A1%A8%E7%A4%BA0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">2.4.2.</span> <span class="nav-text">使用补码可以解决0的符号，和用[0000 0000]原、[1000 0000]原两个编码表示0的问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">例题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E6%95%B0%E5%92%8C%E7%9C%9F%E5%80%BC"><span class="nav-number">1.</span> <span class="nav-text">机器数和真值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E6%95%B0"><span class="nav-number">1.1.</span> <span class="nav-text">机器数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9C%9F%E5%80%BC"><span class="nav-number">1.2.</span> <span class="nav-text">真值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">原码、反码、补码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%A0%81"><span class="nav-number">2.1.</span> <span class="nav-text">原码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E7%A0%81"><span class="nav-number">2.2.</span> <span class="nav-text">反码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A5%E7%A0%81"><span class="nav-number">2.3.</span> <span class="nav-text">补码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BD%95%E8%A6%81%E4%BD%BF%E7%94%A8%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E5%92%8C%E8%A1%A5%E7%A0%81"><span class="nav-number">2.4.</span> <span class="nav-text">为何要使用原码、反码和补码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%8F%8D%E7%A0%81%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87%E5%8A%A0%E6%B3%95%E8%AE%A1%E7%AE%97%E5%87%8F%E6%B3%95%EF%BC%8C%E8%AE%A9%E7%AC%A6%E5%8F%B7%E4%BD%8D%E5%8F%82%E4%B8%8E%E8%BF%90%E7%AE%97%EF%BC%8C%E7%AE%80%E5%8C%96%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.4.1.</span> <span class="nav-text">使用反码可以通过加法计算减法，让符号位参与运算，简化计算机电路基础设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%A1%A5%E7%A0%81%E5%8F%AF%E4%BB%A5%E8%A7%A3%E5%86%B30%E7%9A%84%E7%AC%A6%E5%8F%B7%EF%BC%8C%E5%92%8C%E7%94%A8-0000-0000-%E5%8E%9F%E3%80%81-1000-0000-%E5%8E%9F%E4%B8%A4%E4%B8%AA%E7%BC%96%E7%A0%81%E8%A1%A8%E7%A4%BA0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">2.4.2.</span> <span class="nav-text">使用补码可以解决0的符号，和用[0000 0000]原、[1000 0000]原两个编码表示0的问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">例题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E4%B8%AD%E7%9A%84%E9%80%BB%E8%BE%91%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">5.</span> <span class="nav-text">逻辑电路中的逻辑表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%86%85%E5%AD%98%E6%8C%89%E5%AD%97%E8%8A%82%E7%BC%96%E5%9D%80%EF%BC%8C%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80%E5%8C%BA%E5%9F%9F%E4%BB%8E44000H%E5%88%B06BFFFH%EF%BC%8C%E5%85%B1%E6%9C%89%EF%BC%88%EF%BC%89K%EF%BC%8C%E8%8B%A5%E9%87%87%E7%94%A816K-x-4bit%E7%9A%84SRAM%E8%8A%AF%E7%89%87%EF%BC%8C%E6%9E%84%E6%88%90%E8%AF%A5%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E5%85%B1%E9%9C%80%EF%BC%88%EF%BC%89%E7%89%87"><span class="nav-number">6.</span> <span class="nav-text">某计算机内存按字节编址，内存地址区域从44000H到6BFFFH，共有（）K，若采用16K x 4bit的SRAM芯片，构成该内存区域共需（）片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CPU%E6%89%A7%E8%A1%8C%E7%A8%8B%E5%BA%8F%E6%97%B6%EF%BC%8C%E4%B8%BA%E4%BA%86%E4%BB%8E%E5%86%85%E5%AD%98%E8%AF%BB%E5%8F%96%E6%8C%87%E4%BB%A4%EF%BC%8C%E9%9C%80%E8%A6%81%E5%85%88%E5%B0%86%E7%A8%8B%E5%BA%8F%E8%AE%A1%E6%95%B0%E5%99%A8%EF%BC%88PC%EF%BC%89%E7%9A%84%E5%86%85%E5%AD%98%E8%BE%93%E9%80%81%E5%88%B0%E5%9C%B0%E5%9D%80%E6%80%BB%E7%BA%BF%E4%B8%8A"><span class="nav-number">7.</span> <span class="nav-text">CPU执行程序时，为了从内存读取指令，需要先将程序计数器（PC）的内存输送到地址总线上</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E5%A4%9A%E7%A7%8D%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E6%96%B9%E6%A1%88%E4%B8%AD%EF%BC%8C%E8%A7%A3%E5%86%B3%E5%86%85%E5%AD%98%E7%A2%8E%E7%89%87%E9%97%AE%E9%A2%98%E7%9A%84%E6%98%AF%E5%8F%AF%E9%87%8D%E5%AE%9A%E4%BD%8D%E5%88%86%E5%8C%BA"><span class="nav-number">8.</span> <span class="nav-text">在多种存储管理方案中，解决内存碎片问题的是可重定位分区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E5%AD%98%E5%82%A8%E5%99%A8%E4%B8%BB%E8%A6%81%E7%94%B1%E7%A3%81%E7%9B%98%E5%92%8C%E4%B8%BB%E5%AD%98%E7%BB%84%E6%88%90"><span class="nav-number">9.</span> <span class="nav-text">虚拟存储器主要由磁盘和主存组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">10.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
