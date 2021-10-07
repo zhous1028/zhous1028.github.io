@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="基础知识在操作系统中，进程之间经常会存在互斥和同步两种关系，为了有效处理这种情况，W.Dijsktra在1965年提出信号量和PV操作的概念。  信号量：一种特殊的变量，表现形式是一个整型S和一个队列 P操作：也称为”down()和wait()操作”，使S&#x3D;S-1，若S&lt;0，进程暂停执行并放入信号量的等待队列。 V操作，也称为”up()和signal()操作”，使S&#x3D;S+1，若S&lt;&#x3D;0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软考初级-信号量与PV操作">
+<meta property="og:url" content="http://example.com/2021/10/07/%E8%BD%AF%E8%80%83%E5%88%9D%E7%BA%A7-%E4%BF%A1%E5%8F%B7%E9%87%8F%E4%B8%8EPV%E6%93%8D%E4%BD%9C/index.html">
+<meta property="og:site_name" content="Zhou Shuang">
+<meta property="og:description" content="基础知识在操作系统中，进程之间经常会存在互斥和同步两种关系，为了有效处理这种情况，W.Dijsktra在1965年提出信号量和PV操作的概念。  信号量：一种特殊的变量，表现形式是一个整型S和一个队列 P操作：也称为”down()和wait()操作”，使S&#x3D;S-1，若S&lt;0，进程暂停执行并放入信号量的等待队列。 V操作，也称为”up()和signal()操作”，使S&#x3D;S+1，若S&lt;&#x3D;0">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-10-07T02:37:33.000Z">
+<meta property="article:modified_time" content="2021-10-07T05:13:46.329Z">
+<meta property="article:author" content="zhoushuang">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/10/07/%E8%BD%AF%E8%80%83%E5%88%9D%E7%BA%A7-%E4%BF%A1%E5%8F%B7%E9%87%8F%E4%B8%8EPV%E6%93%8D%E4%BD%9C/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>软考初级-信号量与PV操作 | Zhou Shuang</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Zhou Shuang</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/07/%E8%BD%AF%E8%80%83%E5%88%9D%E7%BA%A7-%E4%BF%A1%E5%8F%B7%E9%87%8F%E4%B8%8EPV%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="zhoushuang">
+      <meta itemprop="description" content="不要追求大而全，先做一个简单版本">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhou Shuang">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          软考初级-信号量与PV操作
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-10-07 10:37:33 / Modified: 13:13:46" itemprop="dateCreated datePublished" datetime="2021-10-07T10:37:33+08:00">2021-10-07</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>在操作系统中，进程之间经常会存在互斥和同步两种关系，为了有效处理这种情况，W.Dijsktra在1965年提出信号量和PV操作的概念。</p>
+<ul>
+<li>信号量：一种特殊的变量，表现形式是一个整型S和一个队列</li>
+<li>P操作：也称为”down()和wait()操作”，使S=S-1，若S&lt;0，进程暂停执行并放入信号量的等待队列。</li>
+<li>V操作，也称为”up()和signal()操作”，使S=S+1，若S&lt;=0，唤醒等待队列中的一个进程。</li>
+</ul>
+<p>PV操作属于进程的低级通信。</p>
+<p>使用PV操作实现进程互斥时应注意：</p>
+<ul>
+<li>每个程序中用户实现互斥的P、V操作必须成对出现，先做P操作，进入临界区，再做V操作，出临界区。若有多个分支，要认真检查其成对性。</li>
+<li>P、V操作应分别紧靠临界区的头尾部，临界区的代码应尽可能短，不能有死循环。</li>
+<li>互斥信号量的初值一般设为1.</li>
+</ul>
+<h2 id="数据库管理技术是在文件系统的基础上发展起来的。数据模型的三要素是数据结构、数据操作和数据约束条件。建立数据库系统的主要目标是减少数据冗余、提高数据的独立性，并集中检查数据完整性。"><a href="#数据库管理技术是在文件系统的基础上发展起来的。数据模型的三要素是数据结构、数据操作和数据约束条件。建立数据库系统的主要目标是减少数据冗余、提高数据的独立性，并集中检查数据完整性。" class="headerlink" title="数据库管理技术是在文件系统的基础上发展起来的。数据模型的三要素是数据结构、数据操作和数据约束条件。建立数据库系统的主要目标是减少数据冗余、提高数据的独立性，并集中检查数据完整性。"></a>数据库管理技术是在文件系统的基础上发展起来的。数据模型的三要素是数据结构、数据操作和数据约束条件。建立数据库系统的主要目标是减少数据冗余、提高数据的独立性，并集中检查数据完整性。</h2><p>数据库是数据处理的中心问题，它的发展经历了人工管理、文件系统和数据库系统三个阶段。</p>
+<p>数据模型通常由数据结构、数据操作和完整性约束三部分组成。其中数据结构对系统静态特征的描述，数据操作是对系统动态特征的描述，完整性约束是一组完整性规则的集合。</p>
+<h2 id="在关系代数运算中，并运算结果的关系模式与原关系模式相同"><a href="#在关系代数运算中，并运算结果的关系模式与原关系模式相同" class="headerlink" title="在关系代数运算中，并运算结果的关系模式与原关系模式相同"></a>在关系代数运算中，并运算结果的关系模式与原关系模式相同</h2><p>并操作是指在关系R和关系S具有相同关系模式的情况下，将属于R或属于S的元组合并起来。因此，并操作的结果的关系模式与原关系模式相同。</p>
+<h2 id="我国知识产权具有法定保护期限，但商业秘密受法律保护的期限是不确定的。"><a href="#我国知识产权具有法定保护期限，但商业秘密受法律保护的期限是不确定的。" class="headerlink" title="我国知识产权具有法定保护期限，但商业秘密受法律保护的期限是不确定的。"></a>我国知识产权具有法定保护期限，但商业秘密受法律保护的期限是不确定的。</h2><p>根据我国现行的《专利法》规定的发明专利权的保护期限是25年，使用新兴和外观设计专利权的期限是10年，均从申请日开始计算。</p>
+<p>根据《中华人民共和国著作权法》规定，公民作品的发表权的保护期限是作者有生之年加上死后50年。</p>
+<p>根据《中华人民共和国商标法》规定，注册商标的有效期是10年，在有效期满后，可以续注册，但必须在期满前6个月提出申请。</p>
+<p>在《反不正当竞争法》中对商业秘密进行了保护，包括技术秘密和经营秘密两项基本内容。</p>
+<h2 id="使用FTP协议进行文件下载时，包括用户名和口令在内，所有传输的数据都不会被自动加密。"><a href="#使用FTP协议进行文件下载时，包括用户名和口令在内，所有传输的数据都不会被自动加密。" class="headerlink" title="使用FTP协议进行文件下载时，包括用户名和口令在内，所有传输的数据都不会被自动加密。"></a>使用FTP协议进行文件下载时，包括用户名和口令在内，所有传输的数据都不会被自动加密。</h2><p>一般在做FTP文件传送的时候，默认情况下传送是公开的，即我们FTP的用户名和密码，以及传输的数据都是可见的。</p>
+<h2 id="在面向对象的方法中，对象是类的实例。表示对象相关特征的数据称为对象的属性，在该数据上执行的功能操作称为对象的行为；一个对象通过发送消息来请求另一个对象为其服务。通常把一个类和这个类的所有对象称为类及对象或对象类。在UML图中，类图是显示一组类、接口协作以及它们之间关系的图。类图用于对系统的静态设计视图建模。"><a href="#在面向对象的方法中，对象是类的实例。表示对象相关特征的数据称为对象的属性，在该数据上执行的功能操作称为对象的行为；一个对象通过发送消息来请求另一个对象为其服务。通常把一个类和这个类的所有对象称为类及对象或对象类。在UML图中，类图是显示一组类、接口协作以及它们之间关系的图。类图用于对系统的静态设计视图建模。" class="headerlink" title="在面向对象的方法中，对象是类的实例。表示对象相关特征的数据称为对象的属性，在该数据上执行的功能操作称为对象的行为；一个对象通过发送消息来请求另一个对象为其服务。通常把一个类和这个类的所有对象称为类及对象或对象类。在UML图中，类图是显示一组类、接口协作以及它们之间关系的图。类图用于对系统的静态设计视图建模。"></a>在面向对象的方法中，对象是类的实例。表示对象相关特征的数据称为对象的属性，在该数据上执行的功能操作称为对象的行为；一个对象通过发送消息来请求另一个对象为其服务。通常把一个类和这个类的所有对象称为类及对象或对象类。在UML图中，类图是显示一组类、接口协作以及它们之间关系的图。类图用于对系统的静态设计视图建模。</h2><h2 id="编译程序的功能是把高级语言写的源程序翻译成与之等价的目标程序（汇编语言或机器语言）。编译程序的工作过程又包括6个阶段：词法分析阶段、语法分析阶段、语义分析阶段、中间代码生成阶段、代码优化阶段和目标代码生成阶段。在词法分析和语法分析阶段中，可检测出程序的语法错误。"><a href="#编译程序的功能是把高级语言写的源程序翻译成与之等价的目标程序（汇编语言或机器语言）。编译程序的工作过程又包括6个阶段：词法分析阶段、语法分析阶段、语义分析阶段、中间代码生成阶段、代码优化阶段和目标代码生成阶段。在词法分析和语法分析阶段中，可检测出程序的语法错误。" class="headerlink" title="编译程序的功能是把高级语言写的源程序翻译成与之等价的目标程序（汇编语言或机器语言）。编译程序的工作过程又包括6个阶段：词法分析阶段、语法分析阶段、语义分析阶段、中间代码生成阶段、代码优化阶段和目标代码生成阶段。在词法分析和语法分析阶段中，可检测出程序的语法错误。"></a>编译程序的功能是把高级语言写的源程序翻译成与之等价的目标程序（汇编语言或机器语言）。编译程序的工作过程又包括6个阶段：词法分析阶段、语法分析阶段、语义分析阶段、中间代码生成阶段、代码优化阶段和目标代码生成阶段。在词法分析和语法分析阶段中，可检测出程序的语法错误。</h2><h2 id="do、else以及static都是C语言关键字，fopen是文件操作的函数。"><a href="#do、else以及static都是C语言关键字，fopen是文件操作的函数。" class="headerlink" title="do、else以及static都是C语言关键字，fopen是文件操作的函数。"></a>do、else以及static都是C语言关键字，fopen是文件操作的函数。</h2><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>[1] <a target="_blank" rel="noopener" href="https://www.cnblogs.com/847775724echo/p/6271380.html">信号量与PV操作</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/10/06/%E8%BD%AF%E8%80%83%E5%88%9D%E7%BA%A7/" rel="prev" title="软考初级-原码、反码和补码">
+      <i class="fa fa-chevron-left"></i> 软考初级-原码、反码和补码
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">基础知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E6%8A%80%E6%9C%AF%E6%98%AF%E5%9C%A8%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%9F%BA%E7%A1%80%E4%B8%8A%E5%8F%91%E5%B1%95%E8%B5%B7%E6%9D%A5%E7%9A%84%E3%80%82%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%B8%89%E8%A6%81%E7%B4%A0%E6%98%AF%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%81%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E5%92%8C%E6%95%B0%E6%8D%AE%E7%BA%A6%E6%9D%9F%E6%9D%A1%E4%BB%B6%E3%80%82%E5%BB%BA%E7%AB%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%BB%E8%A6%81%E7%9B%AE%E6%A0%87%E6%98%AF%E5%87%8F%E5%B0%91%E6%95%B0%E6%8D%AE%E5%86%97%E4%BD%99%E3%80%81%E6%8F%90%E9%AB%98%E6%95%B0%E6%8D%AE%E7%9A%84%E7%8B%AC%E7%AB%8B%E6%80%A7%EF%BC%8C%E5%B9%B6%E9%9B%86%E4%B8%AD%E6%A3%80%E6%9F%A5%E6%95%B0%E6%8D%AE%E5%AE%8C%E6%95%B4%E6%80%A7%E3%80%82"><span class="nav-number">2.</span> <span class="nav-text">数据库管理技术是在文件系统的基础上发展起来的。数据模型的三要素是数据结构、数据操作和数据约束条件。建立数据库系统的主要目标是减少数据冗余、提高数据的独立性，并集中检查数据完整性。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E5%85%B3%E7%B3%BB%E4%BB%A3%E6%95%B0%E8%BF%90%E7%AE%97%E4%B8%AD%EF%BC%8C%E5%B9%B6%E8%BF%90%E7%AE%97%E7%BB%93%E6%9E%9C%E7%9A%84%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%8E%9F%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9B%B8%E5%90%8C"><span class="nav-number">3.</span> <span class="nav-text">在关系代数运算中，并运算结果的关系模式与原关系模式相同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E5%9B%BD%E7%9F%A5%E8%AF%86%E4%BA%A7%E6%9D%83%E5%85%B7%E6%9C%89%E6%B3%95%E5%AE%9A%E4%BF%9D%E6%8A%A4%E6%9C%9F%E9%99%90%EF%BC%8C%E4%BD%86%E5%95%86%E4%B8%9A%E7%A7%98%E5%AF%86%E5%8F%97%E6%B3%95%E5%BE%8B%E4%BF%9D%E6%8A%A4%E7%9A%84%E6%9C%9F%E9%99%90%E6%98%AF%E4%B8%8D%E7%A1%AE%E5%AE%9A%E7%9A%84%E3%80%82"><span class="nav-number">4.</span> <span class="nav-text">我国知识产权具有法定保护期限，但商业秘密受法律保护的期限是不确定的。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8FTP%E5%8D%8F%E8%AE%AE%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E6%97%B6%EF%BC%8C%E5%8C%85%E6%8B%AC%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E5%8F%A3%E4%BB%A4%E5%9C%A8%E5%86%85%EF%BC%8C%E6%89%80%E6%9C%89%E4%BC%A0%E8%BE%93%E7%9A%84%E6%95%B0%E6%8D%AE%E9%83%BD%E4%B8%8D%E4%BC%9A%E8%A2%AB%E8%87%AA%E5%8A%A8%E5%8A%A0%E5%AF%86%E3%80%82"><span class="nav-number">5.</span> <span class="nav-text">使用FTP协议进行文件下载时，包括用户名和口令在内，所有传输的数据都不会被自动加密。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95%E4%B8%AD%EF%BC%8C%E5%AF%B9%E8%B1%A1%E6%98%AF%E7%B1%BB%E7%9A%84%E5%AE%9E%E4%BE%8B%E3%80%82%E8%A1%A8%E7%A4%BA%E5%AF%B9%E8%B1%A1%E7%9B%B8%E5%85%B3%E7%89%B9%E5%BE%81%E7%9A%84%E6%95%B0%E6%8D%AE%E7%A7%B0%E4%B8%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B1%9E%E6%80%A7%EF%BC%8C%E5%9C%A8%E8%AF%A5%E6%95%B0%E6%8D%AE%E4%B8%8A%E6%89%A7%E8%A1%8C%E7%9A%84%E5%8A%9F%E8%83%BD%E6%93%8D%E4%BD%9C%E7%A7%B0%E4%B8%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%A1%8C%E4%B8%BA%EF%BC%9B%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1%E9%80%9A%E8%BF%87%E5%8F%91%E9%80%81%E6%B6%88%E6%81%AF%E6%9D%A5%E8%AF%B7%E6%B1%82%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1%E4%B8%BA%E5%85%B6%E6%9C%8D%E5%8A%A1%E3%80%82%E9%80%9A%E5%B8%B8%E6%8A%8A%E4%B8%80%E4%B8%AA%E7%B1%BB%E5%92%8C%E8%BF%99%E4%B8%AA%E7%B1%BB%E7%9A%84%E6%89%80%E6%9C%89%E5%AF%B9%E8%B1%A1%E7%A7%B0%E4%B8%BA%E7%B1%BB%E5%8F%8A%E5%AF%B9%E8%B1%A1%E6%88%96%E5%AF%B9%E8%B1%A1%E7%B1%BB%E3%80%82%E5%9C%A8UML%E5%9B%BE%E4%B8%AD%EF%BC%8C%E7%B1%BB%E5%9B%BE%E6%98%AF%E6%98%BE%E7%A4%BA%E4%B8%80%E7%BB%84%E7%B1%BB%E3%80%81%E6%8E%A5%E5%8F%A3%E5%8D%8F%E4%BD%9C%E4%BB%A5%E5%8F%8A%E5%AE%83%E4%BB%AC%E4%B9%8B%E9%97%B4%E5%85%B3%E7%B3%BB%E7%9A%84%E5%9B%BE%E3%80%82%E7%B1%BB%E5%9B%BE%E7%94%A8%E4%BA%8E%E5%AF%B9%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%9D%99%E6%80%81%E8%AE%BE%E8%AE%A1%E8%A7%86%E5%9B%BE%E5%BB%BA%E6%A8%A1%E3%80%82"><span class="nav-number">6.</span> <span class="nav-text">在面向对象的方法中，对象是类的实例。表示对象相关特征的数据称为对象的属性，在该数据上执行的功能操作称为对象的行为；一个对象通过发送消息来请求另一个对象为其服务。通常把一个类和这个类的所有对象称为类及对象或对象类。在UML图中，类图是显示一组类、接口协作以及它们之间关系的图。类图用于对系统的静态设计视图建模。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%8A%9F%E8%83%BD%E6%98%AF%E6%8A%8A%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80%E5%86%99%E7%9A%84%E6%BA%90%E7%A8%8B%E5%BA%8F%E7%BF%BB%E8%AF%91%E6%88%90%E4%B8%8E%E4%B9%8B%E7%AD%89%E4%BB%B7%E7%9A%84%E7%9B%AE%E6%A0%87%E7%A8%8B%E5%BA%8F%EF%BC%88%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E6%88%96%E6%9C%BA%E5%99%A8%E8%AF%AD%E8%A8%80%EF%BC%89%E3%80%82%E7%BC%96%E8%AF%91%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%B7%A5%E4%BD%9C%E8%BF%87%E7%A8%8B%E5%8F%88%E5%8C%85%E6%8B%AC6%E4%B8%AA%E9%98%B6%E6%AE%B5%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%E9%98%B6%E6%AE%B5%E3%80%81%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90%E9%98%B6%E6%AE%B5%E3%80%81%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E9%98%B6%E6%AE%B5%E3%80%81%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E9%98%B6%E6%AE%B5%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96%E9%98%B6%E6%AE%B5%E5%92%8C%E7%9B%AE%E6%A0%87%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E9%98%B6%E6%AE%B5%E3%80%82%E5%9C%A8%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%E5%92%8C%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90%E9%98%B6%E6%AE%B5%E4%B8%AD%EF%BC%8C%E5%8F%AF%E6%A3%80%E6%B5%8B%E5%87%BA%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%AF%AD%E6%B3%95%E9%94%99%E8%AF%AF%E3%80%82"><span class="nav-number">7.</span> <span class="nav-text">编译程序的功能是把高级语言写的源程序翻译成与之等价的目标程序（汇编语言或机器语言）。编译程序的工作过程又包括6个阶段：词法分析阶段、语法分析阶段、语义分析阶段、中间代码生成阶段、代码优化阶段和目标代码生成阶段。在词法分析和语法分析阶段中，可检测出程序的语法错误。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#do%E3%80%81else%E4%BB%A5%E5%8F%8Astatic%E9%83%BD%E6%98%AFC%E8%AF%AD%E8%A8%80%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%8Cfopen%E6%98%AF%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E7%9A%84%E5%87%BD%E6%95%B0%E3%80%82"><span class="nav-number">8.</span> <span class="nav-text">do、else以及static都是C语言关键字，fopen是文件操作的函数。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">9.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="zhoushuang"
+      src="/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">zhoushuang</p>
+  <div class="site-description" itemprop="description">不要追求大而全，先做一个简单版本</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhoushuang</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
