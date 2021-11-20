@@ -20,20 +20,23 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="GNU、GCC到底是啥参见一篇很可爱的博客：GCC、GNU到底啥意思. gcc 与 Dev-C++ 的关系gcc 是一套编译器集合。Dev-C++ 是 Windows 上的一个IDE，gcc是Dev-C++默认使用的编译器。即，gcc 是内核，Dev-C++是外壳。">
+  <meta name="description" content="GNU、GCC 到底是啥参见一篇很可爱的博客：GCC、GNU到底啥意思 gcc 与 Dev-C++ 的关系gcc 是一套编译器集合。Dev-C++ 是 Windows 上的一个IDE，gcc是Dev-C++默认使用的编译器。即，gcc 是内核，Dev-C++是外壳。 Windows10 下安装 gcc、g++ 我已经安装了Dev-Cpp 接下来只需将 MinGW64&#x2F;bin 设置为环境变量  No">
 <meta property="og:type" content="article">
-<meta property="og:title" content="gcc 与 Dev-C++ 的关系">
+<meta property="og:title" content="gcc | win10 | 安装与使用">
 <meta property="og:url" content="http://example.com/2021/11/20/gcc-%E4%B8%8E-Dev-C-%E7%9A%84%E5%85%B3%E7%B3%BB/index.html">
 <meta property="og:site_name" content="Zhou Shuang">
-<meta property="og:description" content="GNU、GCC到底是啥参见一篇很可爱的博客：GCC、GNU到底啥意思. gcc 与 Dev-C++ 的关系gcc 是一套编译器集合。Dev-C++ 是 Windows 上的一个IDE，gcc是Dev-C++默认使用的编译器。即，gcc 是内核，Dev-C++是外壳。">
+<meta property="og:description" content="GNU、GCC 到底是啥参见一篇很可爱的博客：GCC、GNU到底啥意思 gcc 与 Dev-C++ 的关系gcc 是一套编译器集合。Dev-C++ 是 Windows 上的一个IDE，gcc是Dev-C++默认使用的编译器。即，gcc 是内核，Dev-C++是外壳。 Windows10 下安装 gcc、g++ 我已经安装了Dev-Cpp 接下来只需将 MinGW64&#x2F;bin 设置为环境变量  No">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhous1028/pictures/blog/img/dev_mingw64.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhous1028/pictures/blog/img/gcc-v.png">
 <meta property="article:published_time" content="2021-11-20T06:40:14.000Z">
-<meta property="article:modified_time" content="2021-11-20T07:20:26.000Z">
+<meta property="article:modified_time" content="2021-11-20T08:56:24.433Z">
 <meta property="article:author" content="zhoushuang">
 <meta property="article:tag" content="gnu">
 <meta property="article:tag" content="gcc">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/zhous1028/pictures/blog/img/dev_mingw64.png">
 
 <link rel="canonical" href="http://example.com/2021/11/20/gcc-%E4%B8%8E-Dev-C-%E7%9A%84%E5%85%B3%E7%B3%BB/">
 
@@ -48,7 +51,7 @@
   };
 </script>
 
-  <title>gcc 与 Dev-C++ 的关系 | Zhou Shuang</title>
+  <title>gcc | win10 | 安装与使用 | Zhou Shuang</title>
   
 
 
@@ -166,7 +169,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          gcc 与 Dev-C++ 的关系
+          gcc | win10 | 安装与使用
         </h1>
 
         <div class="post-meta">
@@ -177,7 +180,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-11-20 14:40:14 / Modified: 15:20:26" itemprop="dateCreated datePublished" datetime="2021-11-20T14:40:14+08:00">2021-11-20</time>
+              <time title="Created: 2021-11-20 14:40:14 / Modified: 16:56:24" itemprop="dateCreated datePublished" datetime="2021-11-20T14:40:14+08:00">2021-11-20</time>
             </span>
 
           
@@ -191,8 +194,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="GNU、GCC到底是啥"><a href="#GNU、GCC到底是啥" class="headerlink" title="GNU、GCC到底是啥"></a>GNU、GCC到底是啥</h1><p>参见一篇很可爱的博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43617936/article/details/104504992">GCC、GNU到底啥意思</a>.</p>
-<h1 id="gcc-与-Dev-C-的关系"><a href="#gcc-与-Dev-C-的关系" class="headerlink" title="gcc 与 Dev-C++ 的关系"></a>gcc 与 Dev-C++ 的关系</h1><p>gcc 是一套编译器集合。<br>Dev-C++ 是 Windows 上的一个IDE，gcc是Dev-C++默认使用的编译器。<br>即，gcc 是内核，Dev-C++是外壳。</p>
+        <h2 id="GNU、GCC-到底是啥"><a href="#GNU、GCC-到底是啥" class="headerlink" title="GNU、GCC 到底是啥"></a>GNU、GCC 到底是啥</h2><p>参见一篇很可爱的博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43617936/article/details/104504992">GCC、GNU到底啥意思</a></p>
+<h2 id="gcc-与-Dev-C-的关系"><a href="#gcc-与-Dev-C-的关系" class="headerlink" title="gcc 与 Dev-C++ 的关系"></a>gcc 与 Dev-C++ 的关系</h2><p>gcc 是一套编译器集合。<br>Dev-C++ 是 Windows 上的一个IDE，gcc是Dev-C++默认使用的编译器。<br>即，gcc 是内核，Dev-C++是外壳。</p>
+<h2 id="Windows10-下安装-gcc、g"><a href="#Windows10-下安装-gcc、g" class="headerlink" title="Windows10 下安装 gcc、g++"></a>Windows10 下安装 gcc、g++</h2><ul>
+<li>我已经安装了Dev-Cpp</li>
+<li>接下来只需将 MinGW64/bin 设置为环境变量<br><img src="https://raw.githubusercontent.com/zhous1028/pictures/blog/img/dev_mingw64.png" alt="dev-cpp 下的 MinGW64"></li>
+</ul>
+<p><mark>Note：</mark></p>
+<ul>
+<li><p>修改环境变量后，如果受影响的是应用程序，则只需重启应用程序，环境变量的修改就会反映到该程序中，无需重启电脑。<br><mark>因此，当我要在cmd中测试gcc是否安装成功时，需要重启cmd，才能看到改变！</mark></p>
+</li>
+<li><p>如果受影响的是系统服务，则必须重启电脑，因为无法在不重启计算机的情况下重新启动系统服务管理器。</p>
+</li>
+<li><p>通过 <code>gcc -v</code> 测试gcc是否安装成功（记得要重启cmd）<br><img src="https://raw.githubusercontent.com/zhous1028/pictures/blog/img/gcc-v.png" alt="查看gcc是否安装成功"></p>
+</li>
+</ul>
 
     </div>
 
@@ -275,7 +291,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GNU%E3%80%81GCC%E5%88%B0%E5%BA%95%E6%98%AF%E5%95%A5"><span class="nav-number">1.</span> <span class="nav-text">GNU、GCC到底是啥</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gcc-%E4%B8%8E-Dev-C-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">2.</span> <span class="nav-text">gcc 与 Dev-C++ 的关系</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#GNU%E3%80%81GCC-%E5%88%B0%E5%BA%95%E6%98%AF%E5%95%A5"><span class="nav-number">1.</span> <span class="nav-text">GNU、GCC 到底是啥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gcc-%E4%B8%8E-Dev-C-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">2.</span> <span class="nav-text">gcc 与 Dev-C++ 的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows10-%E4%B8%8B%E5%AE%89%E8%A3%85-gcc%E3%80%81g"><span class="nav-number">3.</span> <span class="nav-text">Windows10 下安装 gcc、g++</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
