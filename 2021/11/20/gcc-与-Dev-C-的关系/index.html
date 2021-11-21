@@ -27,17 +27,17 @@
 <meta property="og:site_name" content="Zhou Shuang">
 <meta property="og:description" content="GNU、GCC 到底是啥参见一篇很可爱的博客：GCC、GNU到底啥意思 gcc 与 Dev-C++ 的关系gcc 是一套编译器集合。Dev-C++ 是 Windows 上的一个IDE，gcc是Dev-C++默认使用的编译器。即，gcc 是内核，Dev-C++是外壳。 Windows10 下安装 gcc、g++ 我已经安装了Dev-Cpp 接下来只需将 MinGW64&#x2F;bin 设置为环境变量  No">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://raw.githubusercontent.com/zhous1028/pictures/blog/img/dev_mingw64.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/zhous1028/pictures/blog/img/gcc-v.png">
-<meta property="og:image" content="https://i.loli.net/2021/11/21/9cbKTxEPJslGWg7.png">
+<meta property="og:image" content="https://i.loli.net/2021/11/21/rB42pCY5NWOzuMf.png">
+<meta property="og:image" content="https://i.loli.net/2021/11/21/9OL1dKXEIU7qvpe.png">
+<meta property="og:image" content="https://i.loli.net/2021/11/21/lJ8L3CPHa2txBp9.png">
 <meta property="article:published_time" content="2021-11-20T06:40:14.000Z">
-<meta property="article:modified_time" content="2021-11-21T11:01:44.714Z">
+<meta property="article:modified_time" content="2021-11-21T11:14:57.460Z">
 <meta property="article:author" content="zhoushuang">
 <meta property="article:tag" content="gnu">
 <meta property="article:tag" content="gcc">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/zhous1028/pictures/blog/img/dev_mingw64.png">
+<meta name="twitter:image" content="https://i.loli.net/2021/11/21/rB42pCY5NWOzuMf.png">
 
 <link rel="canonical" href="http://example.com/2021/11/20/gcc-%E4%B8%8E-Dev-C-%E7%9A%84%E5%85%B3%E7%B3%BB/">
 
@@ -187,7 +187,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-11-21 19:01:44" itemprop="dateModified" datetime="2021-11-21T19:01:44+08:00">2021-11-21</time>
+                <time title="Modified: 2021-11-21 19:14:57" itemprop="dateModified" datetime="2021-11-21T19:14:57+08:00">2021-11-21</time>
               </span>
 
           
@@ -205,7 +205,7 @@
 <h2 id="gcc-与-Dev-C-的关系"><a href="#gcc-与-Dev-C-的关系" class="headerlink" title="gcc 与 Dev-C++ 的关系"></a>gcc 与 Dev-C++ 的关系</h2><p>gcc 是一套编译器集合。<br>Dev-C++ 是 Windows 上的一个IDE，gcc是Dev-C++默认使用的编译器。<br>即，gcc 是内核，Dev-C++是外壳。</p>
 <h2 id="Windows10-下安装-gcc、g"><a href="#Windows10-下安装-gcc、g" class="headerlink" title="Windows10 下安装 gcc、g++"></a>Windows10 下安装 gcc、g++</h2><ul>
 <li>我已经安装了Dev-Cpp</li>
-<li>接下来只需将 MinGW64/bin 设置为环境变量<br><img src="https://raw.githubusercontent.com/zhous1028/pictures/blog/img/dev_mingw64.png" alt="dev-cpp 下的 MinGW64"></li>
+<li>接下来只需将 MinGW64/bin 设置为环境变量<br><img src="https://i.loli.net/2021/11/21/rB42pCY5NWOzuMf.png" alt="dev_mingw64.png"></li>
 </ul>
 <p><mark>Note：</mark></p>
 <ul>
@@ -213,7 +213,7 @@
 </li>
 <li><p>如果受影响的是系统服务，则必须重启电脑，因为无法在不重启计算机的情况下重新启动系统服务管理器。</p>
 </li>
-<li><p>通过 <code>gcc -v</code> 和<code>g++ -v</code>分别测试gcc、g++是否安装成功（记得要重启cmd）<br><img src="https://raw.githubusercontent.com/zhous1028/pictures/blog/img/gcc-v.png" alt="查看gcc是否安装成功"></p>
+<li><p>通过 <code>gcc -v</code> 和<code>g++ -v</code>分别测试gcc、g++是否安装成功（记得要重启cmd）<br><img src="https://i.loli.net/2021/11/21/9OL1dKXEIU7qvpe.png" alt="gcc-v.png"></p>
 </li>
 </ul>
 <h2 id="gcc-g-常识"><a href="#gcc-g-常识" class="headerlink" title="gcc/g++ 常识"></a>gcc/g++ 常识</h2><ul>
@@ -223,7 +223,7 @@
 <li>Linux下生成.out文件（Linux下文件后缀只是提示，是否可执行取决于有无 -x &lt;执行&gt; 权限）</li>
 </ul>
 <h2 id="win下gcc编译c程序示例"><a href="#win下gcc编译c程序示例" class="headerlink" title="win下gcc编译c程序示例"></a>win下gcc编译c程序示例</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// step.1 生成可执行文件 gcc -o 输出文件名.exe 源文件名.c</span></span><br><span class="line"><span class="comment">// 以 data2str.c 为例，该程序是为了学习C下数字转字符串，功能是输出当前时间</span></span><br><span class="line">gcc -o data2str.exe data2str.c</span><br><span class="line"><span class="comment">// 此时已生成了 data2str.exe 可执行文件</span></span><br><span class="line"><span class="comment">// step.2 执行程序</span></span><br><span class="line">data2str.exe</span><br><span class="line"><span class="comment">// 此时便可输出执行结果</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2021/11/21/9cbKTxEPJslGWg7.png" alt="data2str.png"></p>
+<p><img src="https://i.loli.net/2021/11/21/lJ8L3CPHa2txBp9.png" alt="data2str.png"></p>
 <h2 id="更多命令和编译汇编链接过程详见以下博客"><a href="#更多命令和编译汇编链接过程详见以下博客" class="headerlink" title="更多命令和编译汇编链接过程详见以下博客"></a>更多命令和编译汇编链接过程详见以下博客</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/-beyond/p/6636485.html">在Windows命令行中编译运行C/C++程序</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/chenmingjun/p/8280612.html"><mark>用gcc编译c语言程序以及其编译过程</mark></a></p>
 <p>如此便可在sublime下写小程序，然后直接用cmd编译执行啦~</p>
 
