@@ -161,7 +161,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/11/20/gcc-%E4%B8%8E-Dev-C-%E7%9A%84%E5%85%B3%E7%B3%BB/" class="post-title-link" itemprop="url">gcc | win10 | 安装与使用</a>
+            <a href="/2021/11/20/gcc-%E4%B8%8E-Dev-C-%E7%9A%84%E5%85%B3%E7%B3%BB/" class="post-title-link" itemprop="url">gcc/g++ | win10/linux | 安装与使用</a>
         </h2>
 
         <div class="post-meta">
@@ -170,10 +170,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-11-20 14:40:14 / Modified: 16:56:24" itemprop="dateCreated datePublished" datetime="2021-11-20T14:40:14+08:00">2021-11-20</time>
+              <time title="Created: 2021-11-20 14:40:14" itemprop="dateCreated datePublished" datetime="2021-11-20T14:40:14+08:00">2021-11-20</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-11-21 18:55:08" itemprop="dateModified" datetime="2021-11-21T18:55:08+08:00">2021-11-21</time>
+              </span>
 
           
 
@@ -198,9 +204,19 @@
 </li>
 <li><p>如果受影响的是系统服务，则必须重启电脑，因为无法在不重启计算机的情况下重新启动系统服务管理器。</p>
 </li>
-<li><p>通过 <code>gcc -v</code> 测试gcc是否安装成功（记得要重启cmd）<br><img src="https://raw.githubusercontent.com/zhous1028/pictures/blog/img/gcc-v.png" alt="查看gcc是否安装成功"></p>
+<li><p>通过 <code>gcc -v</code> 和<code>g++ -v</code>分别测试gcc、g++是否安装成功（记得要重启cmd）<br><img src="https://raw.githubusercontent.com/zhous1028/pictures/blog/img/gcc-v.png" alt="查看gcc是否安装成功"></p>
 </li>
 </ul>
+<h2 id="gcc-g-常识"><a href="#gcc-g-常识" class="headerlink" title="gcc/g++ 常识"></a>gcc/g++ 常识</h2><ul>
+<li>使用gcc或g++编译c程序</li>
+<li>使用g++编译c++程序</li>
+<li>win下生成.exe可执行文件</li>
+<li>Linux下生成.out文件（Linux下文件后缀只是提示，是否可执行取决于有无 -x &lt;执行&gt; 权限）</li>
+</ul>
+<h2 id="win下gcc编译c程序示例"><a href="#win下gcc编译c程序示例" class="headerlink" title="win下gcc编译c程序示例"></a>win下gcc编译c程序示例</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// step.1 生成可执行文件 gcc -o 输出文件名.exe 源文件名.c</span></span><br><span class="line"><span class="comment">// 以 data2str.c 为例，该程序是为了学习C下数字转字符串，功能是输出当前时间</span></span><br><span class="line">gcc -o data2str.exe data2str.c</span><br><span class="line"><span class="comment">// 此时已生成了 data2str.exe 可执行文件</span></span><br><span class="line"><span class="comment">// step.2 执行程序</span></span><br><span class="line">data2str.exe</span><br><span class="line"><span class="comment">// 此时便可输出执行结果</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/zhous1028/pictures/blog/img/data2str.png" alt="win下gcc编译c程序示例"></p>
+<h2 id="更多命令和编译汇编链接过程详见以下博客"><a href="#更多命令和编译汇编链接过程详见以下博客" class="headerlink" title="更多命令和编译汇编链接过程详见以下博客"></a>更多命令和编译汇编链接过程详见以下博客</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/-beyond/p/6636485.html">在Windows命令行中编译运行C/C++程序</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/chenmingjun/p/8280612.html"><mark>用gcc编译c语言程序以及其编译过程</mark></a></p>
+<p>如此便可在sublime下写小程序，然后直接用cmd编译执行啦~</p>
 
       
     </div>
@@ -243,10 +259,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-11-19 18:11:28 / Modified: 18:11:34" itemprop="dateCreated datePublished" datetime="2021-11-19T18:11:28+08:00">2021-11-19</time>
+              <time title="Created: 2021-11-19 18:11:28" itemprop="dateCreated datePublished" datetime="2021-11-19T18:11:28+08:00">2021-11-19</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-11-21 18:41:28" itemprop="dateModified" datetime="2021-11-21T18:41:28+08:00">2021-11-21</time>
+              </span>
 
           
 
@@ -259,7 +281,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">time_t</span> timep;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">tm</span> *<span class="title">tp</span>;</span></span><br><span class="line"></span><br><span class="line">	time(&amp;timep);</span><br><span class="line">	tp = gmtime(&amp;timep);</span><br><span class="line">	<span class="keyword">char</span> cur_time[<span class="number">20</span>];</span><br><span class="line"></span><br><span class="line">	<span class="built_in">sprintf</span>(cur_time, <span class="string">&quot;%04d-%02d-%02d-%02d-%02d-%02d&quot;</span>, \</span><br><span class="line">            <span class="number">1900</span> + tp-&gt;tm_year, <span class="number">1</span> + tp-&gt;tm_mon, tp-&gt;tm_mday, \</span><br><span class="line">	        <span class="number">8</span> + tp-&gt;tm_hour, tp-&gt;tm_min, tp-&gt;tm_sec);</span><br><span class="line">	<span class="comment">// Linux 下将数字转换为字符串最好使用sprintf函数</span></span><br><span class="line">	<span class="comment">// 第一个参数为要写入字符串的地址，第二个参数为第三个参数的类型，第三个参数为要写入的数据</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;cur_time: %s\n&quot;</span>, cur_time);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * data2str.c</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">time_t</span> timep;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">tm</span> *<span class="title">tp</span>;</span></span><br><span class="line"></span><br><span class="line">	time(&amp;timep);</span><br><span class="line">	tp = gmtime(&amp;timep);</span><br><span class="line">	<span class="keyword">char</span> cur_time[<span class="number">20</span>];</span><br><span class="line"></span><br><span class="line">	<span class="built_in">sprintf</span>(cur_time, <span class="string">&quot;%04d-%02d-%02d-%02d-%02d-%02d&quot;</span>, \</span><br><span class="line">            <span class="number">1900</span> + tp-&gt;tm_year, <span class="number">1</span> + tp-&gt;tm_mon, tp-&gt;tm_mday, \</span><br><span class="line">	        <span class="number">8</span> + tp-&gt;tm_hour, tp-&gt;tm_min, tp-&gt;tm_sec);</span><br><span class="line">	<span class="comment">// Linux 下将数字转换为字符串最好使用sprintf函数</span></span><br><span class="line">	<span class="comment">// 第一个参数为要写入字符串的地址，第二个参数为第三个参数的类型，第三个参数为要写入的数据</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;cur_time: %s\n&quot;</span>, cur_time);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
