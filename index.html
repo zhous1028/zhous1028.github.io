@@ -147,6 +147,136 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/05/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E6%84%9F%E7%9F%A5%E6%9C%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="zhoushuang">
+      <meta itemprop="description" content="不要追求大而全，先做一个简单版本">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhou Shuang">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/05/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E6%84%9F%E7%9F%A5%E6%9C%BA/" class="post-title-link" itemprop="url">深度学习入门——感知机</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-01-05 20:03:42" itemprop="dateCreated datePublished" datetime="2022-01-05T20:03:42+08:00">2022-01-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-01-08 11:45:58" itemprop="dateModified" datetime="2022-01-08T11:45:58+08:00">2022-01-08</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>感知机：perceptron</p>
+<p>感知机接收多个信号，输出一个信号。</p>
+<p>机器学习中的学习是指确定合适的参数的过程。</p>
+<p>权重和偏置的作用是不同的：<br>权重表示输入信号的重要性，<br>偏置表示神经元被激活的容易程度。</p>
+<p>异或门：相同得0，相异得1</p>
+<p>单层感知机可以表示与门、与非门、或门，无法表示异或门。<br>单层感知机可以分离线性空间，无法分离非线性空间。</p>
+<p>两层感知机可以表示异或门。<br>理论上两层感知机就可以构建计算机。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">AND_1</span>(<span class="params">x1, x2</span>):</span></span><br><span class="line">	w1, w2, theta = <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.7</span></span><br><span class="line">	tmp = x1*w1 + x2*w2</span><br><span class="line">	<span class="keyword">if</span> tmp &lt;= theta:</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 与门</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">AND</span>(<span class="params">x1, x2</span>):</span></span><br><span class="line">	x = np.array([x1, x2])</span><br><span class="line">	w = np.array([<span class="number">0.5</span>, <span class="number">0.5</span>])</span><br><span class="line">	b = -<span class="number">0.7</span></span><br><span class="line">	tmp = np.<span class="built_in">sum</span>(x*w) + b</span><br><span class="line">	<span class="keyword">if</span> tmp &lt;= <span class="number">0</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 与非门</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">NAND</span>(<span class="params">x1, x2</span>):</span></span><br><span class="line">	x = np.array([x1, x2])</span><br><span class="line">	w = np.array([-<span class="number">0.5</span>, -<span class="number">0.5</span>]) <span class="comment"># 仅权重和偏置与AND不同</span></span><br><span class="line">	b = <span class="number">0.7</span></span><br><span class="line">	tmp = np.<span class="built_in">sum</span>(x*w) + b</span><br><span class="line">	<span class="keyword">if</span> tmp &lt;= <span class="number">0</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 或门</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">OR</span>(<span class="params">x1, x2</span>):</span></span><br><span class="line">	x = np.array([x1, x2])</span><br><span class="line">	w = np.array([<span class="number">0.5</span>, <span class="number">0.5</span>]) <span class="comment"># 仅权重和偏置与AND不同</span></span><br><span class="line">	b = -<span class="number">0.4</span></span><br><span class="line">	tmp = np.<span class="built_in">sum</span>(x*w) + b</span><br><span class="line">	<span class="keyword">if</span> tmp &lt;= <span class="number">0</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">XOR</span>(<span class="params">x1, x2</span>):</span></span><br><span class="line">	s1 = NAND(x1, x2)</span><br><span class="line">	s2 = OR(x1, x2)</span><br><span class="line">	y  = AND(s1, s2)</span><br><span class="line">	<span class="keyword">return</span> y</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(AND(<span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line"><span class="built_in">print</span>(AND(<span class="number">0</span>, <span class="number">1</span>))</span><br><span class="line"><span class="built_in">print</span>(AND(<span class="number">1</span>, <span class="number">0</span>))</span><br><span class="line"><span class="built_in">print</span>(AND(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(NAND(<span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line"><span class="built_in">print</span>(NAND(<span class="number">0</span>, <span class="number">1</span>))</span><br><span class="line"><span class="built_in">print</span>(NAND(<span class="number">1</span>, <span class="number">0</span>))</span><br><span class="line"><span class="built_in">print</span>(NAND(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(OR(<span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line"><span class="built_in">print</span>(OR(<span class="number">0</span>, <span class="number">1</span>))</span><br><span class="line"><span class="built_in">print</span>(OR(<span class="number">1</span>, <span class="number">0</span>))</span><br><span class="line"><span class="built_in">print</span>(OR(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(XOR(<span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line"><span class="built_in">print</span>(XOR(<span class="number">0</span>, <span class="number">1</span>))</span><br><span class="line"><span class="built_in">print</span>(XOR(<span class="number">1</span>, <span class="number">0</span>))</span><br><span class="line"><span class="built_in">print</span>(XOR(<span class="number">1</span>, <span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/01/3-Layer-Network-by-Python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="zhoushuang">
+      <meta itemprop="description" content="不要追求大而全，先做一个简单版本">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhou Shuang">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/01/3-Layer-Network-by-Python/" class="post-title-link" itemprop="url">3 Layer Network by Python</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-12-01 20:33:30" itemprop="dateCreated datePublished" datetime="2021-12-01T20:33:30+08:00">2021-12-01</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/01/C-%E5%8F%98%E9%87%8F%E6%9C%AC%E8%B4%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -689,238 +819,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/06/%E8%BD%AF%E8%80%83%E5%88%9D%E7%BA%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="zhoushuang">
-      <meta itemprop="description" content="不要追求大而全，先做一个简单版本">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zhou Shuang">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/10/06/%E8%BD%AF%E8%80%83%E5%88%9D%E7%BA%A7/" class="post-title-link" itemprop="url">软考初级-原码、反码和补码</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-10-06 13:24:28" itemprop="dateCreated datePublished" datetime="2021-10-06T13:24:28+08:00">2021-10-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-10-07 10:36:52" itemprop="dateModified" datetime="2021-10-07T10:36:52+08:00">2021-10-07</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="机器数和真值"><a href="#机器数和真值" class="headerlink" title="机器数和真值"></a>机器数和真值</h2><p>在学习原码、补码和反码之前，需要先了解机器数和真值的概念。</p>
-<h3 id="机器数"><a href="#机器数" class="headerlink" title="机器数"></a>机器数</h3><p>一个数在计算机中的二进制表示形式，叫做这个数的机器数。机器数是<strong>带符号</strong>的，在计算机中用一个数的最高位存放符号，正数为0，负数为1。<br>比如，十进制中的数 +3 ，计算机字长为8位，转换成二进制数就是 0000 00011，如果是 -3 ，就是 1000 0011。<br>那么，这里的 0000 0011 和 1000 0011 就是机器数。</p>
-<h3 id="真值"><a href="#真值" class="headerlink" title="真值"></a>真值</h3><p>因为第一位是符号位，所以机器数的形式值就不等于真正的数值。例如上面的有符号数 1000 0011 ，其最高位1表示负，其真正数值为 -3 ，而不是形式值 131（1000 0011转换为十进制为131）。<br>所以，为区别起见，将带符号位的机器数对应的真正的数值称为机器数的真值。例如，0000 0011 的真值为 +000 0011 = +3，1000 0011 的真值为 -000 0011 = -3.</p>
-<h2 id="原码、反码、补码"><a href="#原码、反码、补码" class="headerlink" title="原码、反码、补码"></a>原码、反码、补码</h2><p>在探求机器为何要使用补码之前，我们要先了解原码、补码和反码的概念。对于一个数，计算机要使用一定的编码方式进行存储。原码、反码和补码是机器存储一个具体数字的编码方式。</p>
-<h3 id="原码"><a href="#原码" class="headerlink" title="原码"></a>原码</h3><p>原码就是符号位加上真值的绝对值，其形式与机器数相同，即用最高位表示符号，其余位表示值。以8位二进制为例：</p>
-<ul>
-<li>[+1]<sub>原</sub> = 0000 0001</li>
-<li>[ -1]<sub>原</sub> = 1000 0001</li>
-</ul>
-<p>因为第一位是符号位，所以8位二进制数的表示范围为：</p>
-<ul>
-<li>[1111 1111, 0111 1111] ==&gt; [-127, 127]</li>
-</ul>
-<h3 id="反码"><a href="#反码" class="headerlink" title="反码"></a>反码</h3><p>反码的表示方法为：</p>
-<ul>
-<li>正数的反码是其本身</li>
-<li>负数的反码是在其原码的基础上，符号位不变，其余各位取反。</li>
-<li>[+1]<sub>原</sub> = [+1]<sub>反</sub> = 0000 0001</li>
-<li>[-1]<sub>原</sub> = 1000 0001</li>
-<li>[-1]<sub>反</sub> = 1111 1110</li>
-</ul>
-<h3 id="补码"><a href="#补码" class="headerlink" title="补码"></a>补码</h3><p>补码的表示方法为：</p>
-<ul>
-<li>正数的补码是其本身</li>
-<li>负数的补码是在其原码的基础上，符号位不变，其余各位取反，最后一位+1（即在反码的基础上+1)</li>
-<li>[+1]<sub>原</sub> = [+1]<sub>反</sub> = [+1]<sub>补</sub> = 0000 0001</li>
-<li>[-1]<sub>原</sub> = 1000 0001</li>
-<li>[-1]<sub>反</sub> = 1111 1110</li>
-<li>[-1]<sub>补</sub> = 1111 1111</li>
-</ul>
-<h3 id="为何要使用原码、反码和补码"><a href="#为何要使用原码、反码和补码" class="headerlink" title="为何要使用原码、反码和补码"></a>为何要使用原码、反码和补码</h3><h4 id="使用反码可以通过加法计算减法，让符号位参与运算，简化计算机电路基础设计"><a href="#使用反码可以通过加法计算减法，让符号位参与运算，简化计算机电路基础设计" class="headerlink" title="使用反码可以通过加法计算减法，让符号位参与运算，简化计算机电路基础设计"></a>使用反码可以通过加法计算减法，让符号位参与运算，简化计算机电路基础设计</h4><ul>
-<li>1 - 1 = 1 + (-1) = [0000 0001]<sub>原</sub> + [1000 0001]<sub>原</sub> = [0000 0001]<sub>反</sub> + [1111 1110]<sub>反</sub> = [1111 1111]<sub>反</sub> = [1000 0000]<sub>原</sub> = -0</li>
-</ul>
-<h4 id="使用补码可以解决0的符号，和用-0000-0000-原、-1000-0000-原两个编码表示0的问题"><a href="#使用补码可以解决0的符号，和用-0000-0000-原、-1000-0000-原两个编码表示0的问题" class="headerlink" title="使用补码可以解决0的符号，和用[0000 0000]原、[1000 0000]原两个编码表示0的问题"></a>使用补码可以解决0的符号，和用[0000 0000]<sub>原</sub>、[1000 0000]<sub>原</sub>两个编码表示0的问题</h4><ul>
-<li>1 - 1 = 1 + (-1) = [0000 0001]<sub>补</sub> + [1111 1111]<sub>补</sub> = [0000 0000]<sub>补</sub> = [0000 0000]<sub>原</sub> = 0</li>
-</ul>
-<p>这样0用[0000 0000]<sub>补</sub>表示，而-0就不存在了，而且可以用[1000 0000]<sub>补</sub>表示-128.</p>
-<ul>
-<li>-1 - 127 = -1 + (-127) = [1111 1111]<sub>补</sub> + [1000 0001]<sub>补</sub> = [1000 0000]<sub>补</sub></li>
-</ul>
-<p>-1 - 127 的结果应该是-128，在补码运算结果中，[1000 0000]<sub>补</sub>就是-128。但是，由于是使用原来-0的补码来表示-128，所以 <strong>-128并没有原码和反码表示</strong>（对-128的补码表示[1000 0000]补出来的原码是[0000 0000]<sub>原</sub>，这是不对的）。</p>
-<p>使用补码，不仅修复了0的符号以及两个编码表示问题，还能够多表示一个最低数。因此，对于8位二进制数，使用原码和反码，其表示范围是[-127, 127]，而使用补码，其范围为[-128, 127]。</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
-<li>正数的原码=反码=补码</li>
-<li>负数的反码=原码符号位不变，其余各位取反</li>
-<li>负数的补码=原码符号位不变，其余各位取反，且最低位+1</li>
-<li>引入反码是为了将减法统一为加法，让符号位参与运算，简化电路设计，但这样引入了-0和用两个编码表示0的问题</li>
-<li>引入补码是为了解决-0和两个编码表示0的问题，且将表示范围扩展了一位最低位</li>
-<li>对于8位二进制数，原码和反码表示范围：[-127, 127]，补码表示范围：[-128, 127]</li>
-</ul>
-<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><ul>
-<li>在<strong>补码</strong>中，0的表示是惟一的，以8位为例<ul>
-<li>原码：0000 0000 或者 1000 0000</li>
-<li>反码：0000 0000 或者 1111 1111</li>
-<li>补码：0000 0000 或者 (1) 0000 0000 都是 0000 0000</li>
-</ul>
-</li>
-</ul>
-<h2 id="逻辑电路中的逻辑表达式"><a href="#逻辑电路中的逻辑表达式" class="headerlink" title="逻辑电路中的逻辑表达式"></a>逻辑电路中的逻辑表达式</h2><table>
-<thead>
-<tr>
-<th align="left"></th>
-<th align="left"></th>
-<th align="left"></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">与</td>
-<td align="left">and</td>
-<td align="left">A + B</td>
-</tr>
-<tr>
-<td align="left">或</td>
-<td align="left">or</td>
-<td align="left">A · B</td>
-</tr>
-<tr>
-<td align="left">异或</td>
-<td align="left">eor</td>
-<td align="left">A ⊕ B</td>
-</tr>
-</tbody></table>
-<h2 id="某计算机内存按字节编址，内存地址区域从44000H到6BFFFH，共有（）K，若采用16K-x-4bit的SRAM芯片，构成该内存区域共需（）片"><a href="#某计算机内存按字节编址，内存地址区域从44000H到6BFFFH，共有（）K，若采用16K-x-4bit的SRAM芯片，构成该内存区域共需（）片" class="headerlink" title="某计算机内存按字节编址，内存地址区域从44000H到6BFFFH，共有（）K，若采用16K x 4bit的SRAM芯片，构成该内存区域共需（）片"></a>某计算机内存按字节编址，内存地址区域从44000H到6BFFFH，共有（）K，若采用16K x 4bit的SRAM芯片，构成该内存区域共需（）片</h2><ul>
-<li>内存按字节编址，意思是每个地址的内存单元可存放1Byte, 8bit数据</li>
-<li>44000H中的H表示16进制，因为16进制中的符号到F就为止了</li>
-<li>1K = 2<sup>10</sup> = 1024</li>
-<li>1KB = 1024B = 1024 x 8 bit</li>
-<li>6BFFFH - 44000H <strong>+ 1</strong>= 28000H = 2 x 16<sup>4</sup> + 8 x 16<sup>3</sup> = 2<sup>15</sup> x 5 = 2<sup>10</sup> x 2<sup>5</sup> x 5 = 32 x 5 K = 160K</li>
-<li>16K x 4bit 的SRAM芯片表示该芯片有16K个地址，每个地址的内存单元可存放4bit数据</li>
-<li>160K x 8bit / (16K x 4bit) = 20 片</li>
-</ul>
-<h2 id="CPU执行程序时，为了从内存读取指令，需要先将程序计数器（PC）的内存输送到地址总线上"><a href="#CPU执行程序时，为了从内存读取指令，需要先将程序计数器（PC）的内存输送到地址总线上" class="headerlink" title="CPU执行程序时，为了从内存读取指令，需要先将程序计数器（PC）的内存输送到地址总线上"></a>CPU执行程序时，为了从内存读取指令，需要先将程序计数器（PC）的内存输送到地址总线上</h2><ul>
-<li>程序计数器的作用是存储下一条将要执行的指令的地址。为了从内从中读取指令，需要首先将程序计数器的内容输送到地址总线上。</li>
-</ul>
-<h2 id="在多种存储管理方案中，解决内存碎片问题的是可重定位分区"><a href="#在多种存储管理方案中，解决内存碎片问题的是可重定位分区" class="headerlink" title="在多种存储管理方案中，解决内存碎片问题的是可重定位分区"></a>在多种存储管理方案中，解决内存碎片问题的是可重定位分区</h2><p>可重定位分区的基本思想是：移动所有已分配好的分区，使之成为连续区域。</p>
-<h2 id="虚拟存储器主要由磁盘和主存组成"><a href="#虚拟存储器主要由磁盘和主存组成" class="headerlink" title="虚拟存储器主要由磁盘和主存组成"></a>虚拟存储器主要由磁盘和主存组成</h2><p>虚拟存储器具有请求调入功能和置换功能，仅把作业的一部分装入主存便可运行作业，是能从逻辑上对主存容量进行扩充的一种虚拟存储器系统。其逻辑容量由主存和外存容量之和，以及CPU可寻址的范围来决定，其运行速度接近于主存速度，成本却比较低。可见，虚拟存储技术是一种性能非常优越的存储管理技术，故被广泛的应用于大中小型机器和微型机中。</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>[1] <a target="_blank" rel="noopener" href="https://www.cnblogs.com/wqbin/p/11142873.html">原码、补码和反码</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/02/%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E7%9B%B8%E5%85%B3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="zhoushuang">
-      <meta itemprop="description" content="不要追求大而全，先做一个简单版本">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zhou Shuang">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/10/02/%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E7%9B%B8%E5%85%B3/" class="post-title-link" itemprop="url">视频剪辑相关</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-10-02 16:10:36" itemprop="dateCreated datePublished" datetime="2021-10-02T16:10:36+08:00">2021-10-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-10-06 13:23:48" itemprop="dateModified" datetime="2021-10-06T13:23:48+08:00">2021-10-06</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><ul>
-<li>H264是视频编码格式</li>
-<li>AAC是音频编码格式</li>
-<li>RARBG是一个BT网站名</li>
-<li>720P和1080P混剪：输出720P的片子看不出差别，输出1080P的片子720P素材会有“马赛克”</li>
-</ul>
-<h2 id="音频处理"><a href="#音频处理" class="headerlink" title="音频处理"></a>音频处理</h2><h3 id="让结尾处音乐逐渐消失"><a href="#让结尾处音乐逐渐消失" class="headerlink" title="让结尾处音乐逐渐消失"></a>让结尾处音乐逐渐消失</h3><p>窗口 → 效果 → 音频转换 → 淡入淡出 → 指数型淡出</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -992,7 +890,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1028,7 +926,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
