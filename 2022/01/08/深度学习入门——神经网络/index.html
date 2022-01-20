@@ -28,9 +28,9 @@
 <meta property="og:description" content="感知机的权重由人工设置，而神经网络可以自动从数据中学习到合适的参数。 激活函数h(x)将输入信号的总和转换为输出信号，比如阶跃函数，当输入总和大于0时，输出1，否则输出0。 激活函数是连接感知机和神经网络的桥梁。 “朴素感知机”是指单层网络，指的是激活函数使用了阶跃函数的模型。“多层感知机”指的是神经网络，即使用sigmoid函数等平滑的激活函数的多层网络。 Activation Function">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://s2.loli.net/2022/01/08/SyDKAsTX7FqmVIu.png">
-<meta property="og:image" content="https://s2.loli.net/2022/01/08/e5IZwxuXFE7op6t.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/20/BS2AiEjxceJUTId.png">
 <meta property="article:published_time" content="2022-01-08T03:49:53.000Z">
-<meta property="article:modified_time" content="2022-01-08T09:34:21.321Z">
+<meta property="article:modified_time" content="2022-01-20T12:14:04.868Z">
 <meta property="article:author" content="zhoushuang">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://s2.loli.net/2022/01/08/SyDKAsTX7FqmVIu.png">
@@ -175,10 +175,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-01-08 11:49:53 / Modified: 17:34:21" itemprop="dateCreated datePublished" datetime="2022-01-08T11:49:53+08:00">2022-01-08</time>
+              <time title="Created: 2022-01-08 11:49:53" itemprop="dateCreated datePublished" datetime="2022-01-08T11:49:53+08:00">2022-01-08</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-01-20 20:14:04" itemprop="dateModified" datetime="2022-01-20T20:14:04+08:00">2022-01-20</time>
+              </span>
 
           
 
@@ -195,13 +201,15 @@
 <p>激活函数h(x)将输入信号的总和转换为输出信号，比如阶跃函数，当输入总和大于0时，输出1，否则输出0。</p>
 <p>激活函数是连接感知机和神经网络的桥梁。</p>
 <p>“朴素感知机”是指单层网络，指的是激活函数使用了阶跃函数的模型。<br>“多层感知机”指的是神经网络，即使用sigmoid函数等平滑的激活函数的多层网络。</p>
-<h2 id="Activation-Function"><a href="#Activation-Function" class="headerlink" title="Activation Function"></a>Activation Function</h2><h3 id="sigmoid-function"><a href="#sigmoid-function" class="headerlink" title="sigmoid function"></a>sigmoid function</h3><p>$$ h(x)=\frac{1}{1 - e^{-1}} $$<br>$$ x^{y^z}=(1+{\rm e}^x)^{-2xy^w} $$</p>
+<h2 id="Activation-Function"><a href="#Activation-Function" class="headerlink" title="Activation Function"></a>Activation Function</h2><h3 id="sigmoid-function"><a href="#sigmoid-function" class="headerlink" title="sigmoid function"></a>sigmoid function</h3><p>$$ h(x)=\frac{1}{1 - e^{-1}} $$</p>
 <p><img src="https://s2.loli.net/2022/01/08/SyDKAsTX7FqmVIu.png" alt="step_and_sigmoid.png"></p>
 <p>感知机神经元之间流动的是0或1的二元信号，而神经网络中流动的是连续的实数值信号。</p>
 <p>激活函数不能使用线性函数，即$ h(x)=cx $的函数，因为如果使用线性函数，那么加深神经网络的层数就没有意义了。</p>
 <h3 id="ReLU-function"><a href="#ReLU-function" class="headerlink" title="ReLU function"></a>ReLU function</h3><p>在神经网络的发展史上，sigmoid函数很早就开始被使用了，而最近则主要使用ReLU（Rectified Linear Unit）函数。</p>
 <p>$$<br>\begin{equation}<br>h(x) = \begin{cases}<br>x &amp; (x &gt; 0)<br>0 &amp; (x \led 0)<br>\end{cases}<br>\end{equation}<br>$$</p>
-<p>$$<br>\begin{equation}<br>h(x) = \begin{cases}<br>x &amp; (x &gt; 0)<br>0 &amp; (x &lt;= 0)<br>\end{cases}<br>\end{equation}<br>$$<br><img src="https://s2.loli.net/2022/01/08/e5IZwxuXFE7op6t.png" alt="ReLU.png"></p>
+<p>$$<br>\begin{equation}<br>h(x) = \begin{cases}<br>x &amp; (x &gt; 0)<br>0 &amp; (x &lt;= 0)<br>\end{cases}<br>\end{equation}<br>$$</p>
+<p>$$ h(x)=<br>\begin{cases}<br>x &amp; (x &gt; 0) \<br>0 &amp; (x /leq 0)<br>\end{cases}<br>$$</p>
+<p><img src="https://s2.loli.net/2022/01/20/BS2AiEjxceJUTId.png" alt="ReLU.png"></p>
 
     </div>
 
