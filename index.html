@@ -178,7 +178,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-01-22 11:40:57" itemprop="dateModified" datetime="2022-01-22T11:40:57+08:00">2022-01-22</time>
+                <time title="Modified: 2022-01-22 13:47:23" itemprop="dateModified" datetime="2022-01-22T13:47:23+08:00">2022-01-22</time>
               </span>
 
           
@@ -217,7 +217,15 @@
 <h2 id="输出层的设计"><a href="#输出层的设计" class="headerlink" title="输出层的设计"></a>输出层的设计</h2><p>$$<br>机器学习的问题<br>\begin{cases}<br>分类问题：判断数据属于哪一类别 \\<br>回归问题：根据输入预测一个（连续的）数值（比如根据一个人的图像预测其体重）<br>\end{cases}<br>$$</p>
 <p>$$<br>输出层激活函数<br>\begin{cases}<br>分类问题：softmax函数 \\<br>回归问题：恒等函数<br>\end{cases}<br>$$</p>
 <h3 id="softmax函数"><a href="#softmax函数" class="headerlink" title="softmax函数"></a>softmax函数</h3><p>$$<br>y_k =<br>\frac {e^{a_k}} {\sum_{i=1}^n e^{a_i}}<br>$$</p>
-<p>上式表示输出层共有$n$个神经元，计算第$k$个神经元的输出$y_k$</p>
+<p>上式表示输出层共有$n$个神经元，计算第$k$个神经元的输出$y_k$。<br>从上式可以看出：</p>
+<ul>
+<li>softmax函数的分子是输入信号$a_k$的指数函数，分母是所有输入信号的指数函数的和。</li>
+<li>输出层的各个神经元都受到所有输入信号时影响。</li>
+</ul>
+<h4 id="softmax的实现"><a href="#softmax的实现" class="headerlink" title="softmax的实现"></a>softmax的实现</h4><ul>
+<li>直观思路<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># softmax</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">softmax</span>(<span class="params">a</span>):</span></span><br><span class="line">	<span class="keyword">return</span> np.exp(a) / np.<span class="built_in">sum</span>(np.exp(a))</span><br></pre></td></tr></table></figure></li>
+<li>该方法存在的问题<br>  该方法在计算机的运算上存在溢出问题。<br>  因为softmax函数的实现中存在指数运算，而指数函数的值很容易变得非常大，比如$e^10 &gt; 20000$，$e^100$后面有40多个0，$e^1000$会返回无穷大inf，如果在这些超大值之间进行除法运算，结果会出现“不确定”的情况。</li>
+</ul>
 
       
     </div>
