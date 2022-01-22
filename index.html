@@ -178,7 +178,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-01-22 14:53:06" itemprop="dateModified" datetime="2022-01-22T14:53:06+08:00">2022-01-22</time>
+                <time title="Modified: 2022-01-22 15:06:11" itemprop="dateModified" datetime="2022-01-22T15:06:11+08:00">2022-01-22</time>
               </span>
 
           
@@ -220,22 +220,24 @@
 <p>上式表示输出层共有$n$个神经元，计算第$k$个神经元的输出$y_k$。<br>从上式可以看出：</p>
 <ul>
 <li>softmax函数的分子是输入信号$a_k$的指数函数，分母是所有输入信号的指数函数的和。</li>
-<li>输出层的各个神经元都受到所有输入信号时影响。</li>
+<li>输出层的各个神经元都受到所有输入信号的影响。</li>
 </ul>
 <h4 id="softmax的实现"><a href="#softmax的实现" class="headerlink" title="softmax的实现"></a>softmax的实现</h4><ul>
-<li>直观思路<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># softmax</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">softmax</span>(<span class="params">a</span>):</span></span><br><span class="line">	<span class="keyword">return</span> np.exp(a) / np.<span class="built_in">sum</span>(np.exp(a))</span><br></pre></td></tr></table></figure></li>
-<li>该方法存在的问题<br>该方法在计算机的运算上存在溢出问题。<br>因为softmax函数的实现中存在指数运算，而指数函数的值很容易变得非常大，比如$e^{10} &gt; 20000$，$e^{100}$后面有40多个0，$e^{1000}$会返回无穷大inf，如果在这些超大值之间进行除法运算，结果会出现“不确定”的情况。 </li>
+<li><p>直观思路</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># softmax</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">softmax</span>(<span class="params">a</span>):</span></span><br><span class="line">	<span class="keyword">return</span> np.exp(a) / np.<span class="built_in">sum</span>(np.exp(a))</span><br></pre></td></tr></table></figure></li>
+<li><p>该方法存在的问题<br>该方法在计算机的运算上存在溢出问题。<br>因为softmax函数的实现中存在指数运算，而指数函数的值很容易变得非常大，比如$e^{10} &gt; 20000$，$e^{100}$后面有40多个0，$e^{1000}$会返回无穷大inf，如果在这些超大值之间进行除法运算，结果会出现“不确定”的情况。<br>计算机处理“数”时，数值必须在4字节或8字节的有限数据宽度内，这意味着数存在有效位数，也就是说，计算机可以表示的数值范围是有限的，因此，会出现超大值无法表示的问题，这个问题称为溢出。</p>
+</li>
+<li><p>方法改进<br>$$<br>\begin{align}<br>y_k<br>&amp; = \frac {e^{a_k}} {\sum_{i=1}^n e^{a_i}} \\<br>&amp; = \frac {C e^{a_k}} {C \sum_{i=1}^n e^{a_i}} \\<br>&amp; = \frac {C e^{a_k + \logC}} {\sum_{i=1}^n e^{a_i + \logC}} \\<br>&amp; = \frac {e^{a_k + C^{\prime}}} {\sum_{i=1}^n e^{a_i + C^{\prime}}}<br>\end{align}<br>$$<br>上式中，$logC$以e为底。<br>上式说明：在进行softmax的指数函数运算时，加上或减去某个常数不会改变运算结果。这里的$C^{\prime}$可以是任何值，为了防止溢出，一般为输入信号中的最大值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># softmax</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">softmax</span>(<span class="params">a</span>):</span></span><br><span class="line">	<span class="keyword">return</span> np.exp(a - np.<span class="built_in">max</span>(a)) / np.<span class="built_in">sum</span>(np.exp(a - np.<span class="built_in">max</span>(a)))</span><br></pre></td></tr></table></figure>
+<img src = "https://s2.loli.net/2022/01/22/IjyuRMU8Jx5qit9.png" width="350" height="250" /></li>
 </ul>
-<p>计算机处理“数”时，数值必须在4字节或8字节的有限数据宽度内，这意味着数存在有效位数，也就是说，计算机可以表示的数值范围是有限的，因此，会出现超大值无法表示的问题，这个问题称为溢出。</p>
-<ul>
-<li>方法改进<br>$$<br>\begin{align}<br>y_k<br>= \frac {e^{a_k}} {\sum_{i=1}^n e^{a_i}} \\<br>= \frac {C e^{a_k}} {C \sum_{i=1}^n e^{a_i}} \\<br>= \frac {C e^{a_k + \logC}} {\sum_{i=1}^n e^{a_i + \logC}} \\<br>= \frac {e^{a_k + C^’}} {\sum_{i=1}^n e^{a_i + C^’}}<br>\end{align}<br>$$<br>上式中，$logC$以e为底。<br>上式说明：在进行softmax的指数函数运算时，加上或减去某个常数不会改变运算结果。这里的$C^’$可以是任何值，为了防止溢出，一般为输入信号中的最大值。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># softmax</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">softmax</span>(<span class="params">a</span>):</span></span><br><span class="line">	<span class="keyword">return</span> np.exp(a - np.<span class="built_in">max</span>(a)) / np.<span class="built_in">sum</span>(np.exp(a - np.<span class="built_in">max</span>(a)))</span><br></pre></td></tr></table></figure>
-<img src = "https://s2.loli.net/2022/01/22/IjyuRMU8Jx5qit9.png" width="350" height="250" />
-#### softmax函数的特征</li>
+<h4 id="softmax函数的特征"><a href="#softmax函数的特征" class="headerlink" title="softmax函数的特征"></a>softmax函数的特征</h4><ul>
 <li>softmax函数的输出是0到1之间的实数</li>
 <li>softmax函数的输出值的总和为1</li>
 <li>softmax函数是单调递增函数，使用softmax函数前后，各个元素之间的大小关系并不会改变</li>
 </ul>
 <p>正因为softmax输出总和为1，其输出才能被解释为“概率”。</p>
+<p>一般而言，神经网络只把输出值最大的神经元所对应的类别作为识别结果。并且，即便使用softmax函数，输出值最大的神经元的位置也不会变。因此，神经网络在进行分类时，输出层的softmax函数可以省略。<strong>在实际的问题中，由于指数函数的运算需要一定的计算机运算量，因此输出层的softmax函数一般会被省略。</strong></p>
 
       
     </div>
