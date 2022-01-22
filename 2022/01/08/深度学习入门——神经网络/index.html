@@ -29,7 +29,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://s2.loli.net/2022/01/08/SyDKAsTX7FqmVIu.png">
 <meta property="article:published_time" content="2022-01-08T03:49:53.000Z">
-<meta property="article:modified_time" content="2022-01-22T06:29:32.490Z">
+<meta property="article:modified_time" content="2022-01-22T06:35:15.965Z">
 <meta property="article:author" content="zhoushuang">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://s2.loli.net/2022/01/08/SyDKAsTX7FqmVIu.png">
@@ -182,7 +182,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-01-22 14:29:32" itemprop="dateModified" datetime="2022-01-22T14:29:32+08:00">2022-01-22</time>
+                <time title="Modified: 2022-01-22 14:35:15" itemprop="dateModified" datetime="2022-01-22T14:35:15+08:00">2022-01-22</time>
               </span>
 
           
@@ -232,9 +232,13 @@
 </ul>
 <p>计算机处理“数”时，数值必须在4字节或8字节的有限数据宽度内，这意味着数存在有效位数，也就是说，计算机可以表示的数值范围是有限的，因此，会出现超大值无法表示的问题，这个问题称为溢出。</p>
 <ul>
-<li>方法改进<br>$$<br>y_k<br>= \frac {e^{a_k}} {\sum_{i=1}^n e^{a_i}} \\<br>= \frac {C e^{a_k}} {C \sum_{i=1}^n e^{a_i}} \\<br>= \frac {C e^{a_k + logC}} {\sum_{i=1}^n e^{a_i + logC}} \\<br>= \frac {e^{a_k + C^’}} {\sum_{i=1}^n e^{a_i + C^’}}<br>$$</li>
+<li>方法改进<br>$$<br>y_k<br>= \frac {e^{a_k}} {\sum_{i=1}^n e^{a_i}} \\<br>= \frac {C e^{a_k}} {C \sum_{i=1}^n e^{a_i}} \\<br>= \frac {C e^{a_k + logC}} {\sum_{i=1}^n e^{a_i + logC}} \\<br>= \frac {e^{a_k + C^’}} {\sum_{i=1}^n e^{a_i + C^’}}<br>$$ </li>
 </ul>
 <p>上式中，$logC$以e为底。<br>上式说明：在进行softmax的指数函数运算时，加上或减去某个常数不会改变运算结果。这里的$C^’$可以是任何值，为了防止溢出，一般为输入信号中的最大值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># softmax</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">softmax</span>(<span class="params">a</span>):</span></span><br><span class="line">	<span class="keyword">return</span> np.exp(a - np.<span class="built_in">max</span>(a)) / np.<span class="built_in">sum</span>(np.exp(a - np.<span class="built_in">max</span>(a)))</span><br></pre></td></tr></table></figure>
+
+
+
 
     </div>
 
