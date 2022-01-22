@@ -178,7 +178,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-01-22 13:47:23" itemprop="dateModified" datetime="2022-01-22T13:47:23+08:00">2022-01-22</time>
+                <time title="Modified: 2022-01-22 13:52:01" itemprop="dateModified" datetime="2022-01-22T13:52:01+08:00">2022-01-22</time>
               </span>
 
           
@@ -224,7 +224,7 @@
 </ul>
 <h4 id="softmax的实现"><a href="#softmax的实现" class="headerlink" title="softmax的实现"></a>softmax的实现</h4><ul>
 <li>直观思路<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># softmax</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">softmax</span>(<span class="params">a</span>):</span></span><br><span class="line">	<span class="keyword">return</span> np.exp(a) / np.<span class="built_in">sum</span>(np.exp(a))</span><br></pre></td></tr></table></figure></li>
-<li>该方法存在的问题<br>  该方法在计算机的运算上存在溢出问题。<br>  因为softmax函数的实现中存在指数运算，而指数函数的值很容易变得非常大，比如$e^10 &gt; 20000$，$e^100$后面有40多个0，$e^1000$会返回无穷大inf，如果在这些超大值之间进行除法运算，结果会出现“不确定”的情况。</li>
+<li>该方法存在的问题<br>该方法在计算机的运算上存在溢出问题。<br>因为softmax函数的实现中存在指数运算，而指数函数的值很容易变得非常大，比如$e^{10} &gt; 20000$，$e^{100}$后面有40多个0，$e^{1000}$会返回无穷大inf，如果在这些超大值之间进行除法运算，结果会出现“不确定”的情况。</li>
 </ul>
 
       
