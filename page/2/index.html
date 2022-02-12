@@ -147,70 +147,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/16/C-%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/13th.jpg">
-      <meta itemprop="name" content="zhoushuang">
-      <meta itemprop="description" content="不要追求大而全，先做一个简单版本">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zhou Shuang">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/16/C-%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4/" class="post-title-link" itemprop="url">C | 获取当前时间</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-11-16 16:32:34" itemprop="dateCreated datePublished" datetime="2021-11-16T16:32:34+08:00">2021-11-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-11-23 16:20:12" itemprop="dateModified" datetime="2021-11-23T16:20:12+08:00">2021-11-23</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">time_t</span> timep;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">tm</span> *<span class="title">tp</span>;</span></span><br><span class="line">	time(&amp;timep);</span><br><span class="line">	tp = gmtime(&amp;timep);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;当前时间：%04d-%02d-%02d-%02d-%02d-%02d\n&quot;</span>, \</span><br><span class="line">            <span class="number">1900</span> + tp-&gt;tm_year, <span class="number">1</span> + tp-&gt;tm_mon, tp-&gt;tm_mday, \</span><br><span class="line">	        <span class="number">8</span> + tp-&gt;tm_hour, tp-&gt;tm_min, tp-&gt;tm_sec);</span><br><span class="line">	<span class="comment">// %02d 表示输出占2位，不足2位前面补0</span></span><br><span class="line">    <span class="comment">// 年份从1900开始，所以前面要加1900</span></span><br><span class="line">	<span class="comment">// 月份范围是0~11，所以前面要＋1</span></span><br><span class="line">	<span class="comment">// 中国时间要＋8小时 </span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;从今年1月1日起至今的天数： %d\n&quot;</span>, tp-&gt;tm_yday);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/07/%E8%BD%AF%E8%80%83%E5%88%9D%E7%BA%A7-%E4%BF%A1%E5%8F%B7%E9%87%8F%E4%B8%8EPV%E6%93%8D%E4%BD%9C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1103,7 +1039,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
