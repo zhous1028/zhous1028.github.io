@@ -147,6 +147,200 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/27/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85opencv-python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/13th.jpg">
+      <meta itemprop="name" content="zhoushuang">
+      <meta itemprop="description" content="不要追求大而全，先做一个简单版本">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhou Shuang">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/27/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85opencv-python/" class="post-title-link" itemprop="url">离线安装opencv-python</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-04-27 00:14:47 / Modified: 00:51:36" itemprop="dateCreated datePublished" datetime="2022-04-27T00:14:47+08:00">2022-04-27</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>1、查看pip支持的文件名和版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip debug --verbose</span><br></pre></td></tr></table></figure>
+
+<p>例如：我的平台支持<strong>cp39-cp39-manylinux_2_27_x86_64</strong>的版本</p>
+<p>2、在<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/opencv-python/">清华镜像源</a>找到对应版本<strong>opencv_python-3.4.11.45-cp39-cp39-manylinux2014_x86_64.whl</strong>并下载下来</p>
+<p>3、将.whl文件放入某个目录，比如anaconda3/pkgs/，进入该目录，执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install opencv_python-3.4.11.45-cp39-cp39-manylinux2014_x86_64.whl</span><br></pre></td></tr></table></figure>
+
+<p>5、验证是否安装成功，进入python，import cv2，不报错说明安装成功</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/12/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/13th.jpg">
+      <meta itemprop="name" content="zhoushuang">
+      <meta itemprop="description" content="不要追求大而全，先做一个简单版本">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhou Shuang">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/12/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/" class="post-title-link" itemprop="url">代码规范（持续更新）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-04-12 22:14:07" itemprop="dateCreated datePublished" datetime="2022-04-12T22:14:07+08:00">2022-04-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-04-27 00:13:31" itemprop="dateModified" datetime="2022-04-27T00:13:31+08:00">2022-04-27</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>后缀_E表示enum，后缀_S表示struct，例如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">enum</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	Monday    = <span class="number">1</span>,</span><br><span class="line">	Tuesday   = <span class="number">2</span>,</span><br><span class="line">	Wednesday = <span class="number">3</span>,</span><br><span class="line">	Thursday  = <span class="number">4</span>,</span><br><span class="line">	Friday    = <span class="number">5</span>,</span><br><span class="line">	Saturday  = <span class="number">6</span>,</span><br><span class="line">	Sunday    = <span class="number">7</span>,</span><br><span class="line">&#125; ZS_CODING_WEEK_E;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">char</span> *name;</span><br><span class="line">	<span class="keyword">char</span> sex,</span><br><span class="line">	<span class="keyword">int</span>  age;</span><br><span class="line">&#125; ZS_CODING_PEOPLE_S;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/12/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/13th.jpg">
+      <meta itemprop="name" content="zhoushuang">
+      <meta itemprop="description" content="不要追求大而全，先做一个简单版本">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhou Shuang">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/12/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">深度学习入门——神经网络的学习</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-02-12 12:03:04 / Modified: 18:23:14" itemprop="dateCreated datePublished" datetime="2022-02-12T12:03:04+08:00">2022-02-12</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>神经网络的学习，指的是从训练数据中自动获取最优权重参数的过程。</p>
+<p>从数据中学习：</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -644,227 +838,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/20/gcc-%E4%B8%8E-Dev-C-%E7%9A%84%E5%85%B3%E7%B3%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/13th.jpg">
-      <meta itemprop="name" content="zhoushuang">
-      <meta itemprop="description" content="不要追求大而全，先做一个简单版本">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zhou Shuang">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/20/gcc-%E4%B8%8E-Dev-C-%E7%9A%84%E5%85%B3%E7%B3%BB/" class="post-title-link" itemprop="url">gcc/g++ | win10/linux | 安装与使用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-11-20 14:40:14" itemprop="dateCreated datePublished" datetime="2021-11-20T14:40:14+08:00">2021-11-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-11-23 16:19:00" itemprop="dateModified" datetime="2021-11-23T16:19:00+08:00">2021-11-23</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="GNU、GCC-到底是啥"><a href="#GNU、GCC-到底是啥" class="headerlink" title="GNU、GCC 到底是啥"></a>GNU、GCC 到底是啥</h2><p>参见一篇很可爱的博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43617936/article/details/104504992">GCC、GNU到底啥意思</a></p>
-<h2 id="gcc-与-Dev-C-的关系"><a href="#gcc-与-Dev-C-的关系" class="headerlink" title="gcc 与 Dev-C++ 的关系"></a>gcc 与 Dev-C++ 的关系</h2><p>gcc 是一套编译器集合。<br>Dev-C++ 是 Windows 上的一个IDE，gcc是Dev-C++默认使用的编译器。<br>即，gcc 是内核，Dev-C++是外壳。</p>
-<h2 id="Windows10-下安装-gcc、g"><a href="#Windows10-下安装-gcc、g" class="headerlink" title="Windows10 下安装 gcc、g++"></a>Windows10 下安装 gcc、g++</h2><ul>
-<li>我已经安装了Dev-Cpp</li>
-<li>接下来只需将 MinGW64/bin 设置为环境变量<br><img src="https://i.loli.net/2021/11/21/rB42pCY5NWOzuMf.png" alt="dev_mingw64.png"></li>
-</ul>
-<p><mark>Note：</mark></p>
-<ul>
-<li><p>修改环境变量后，如果受影响的是应用程序，则只需重启应用程序，环境变量的修改就会反映到该程序中，无需重启电脑。<br><mark>因此，当我要在cmd中测试gcc是否安装成功时，需要重启cmd，才能看到改变！</mark></p>
-</li>
-<li><p>如果受影响的是系统服务，则必须重启电脑，因为无法在不重启计算机的情况下重新启动系统服务管理器。</p>
-</li>
-<li><p>通过 <code>gcc -v</code> 和<code>g++ -v</code>分别测试gcc、g++是否安装成功（记得要重启cmd）<br><img src="https://i.loli.net/2021/11/21/9OL1dKXEIU7qvpe.png" alt="gcc-v.png"></p>
-</li>
-</ul>
-<h2 id="gcc-g-常识"><a href="#gcc-g-常识" class="headerlink" title="gcc/g++ 常识"></a>gcc/g++ 常识</h2><ul>
-<li>使用gcc或g++编译c程序</li>
-<li>使用g++编译c++程序</li>
-<li>win下生成.exe可执行文件</li>
-<li>Linux下生成.out文件（Linux下文件后缀只是提示，是否可执行取决于有无 -x &lt;执行&gt; 权限）</li>
-</ul>
-<h2 id="win下gcc编译c程序示例"><a href="#win下gcc编译c程序示例" class="headerlink" title="win下gcc编译c程序示例"></a>win下gcc编译c程序示例</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// step.1 生成可执行文件 gcc -o 输出文件名.exe 源文件名.c</span></span><br><span class="line"><span class="comment">// 以 data2str.c 为例，该程序是为了学习C下数字转字符串，功能是输出当前时间</span></span><br><span class="line">gcc -o data2str.exe data2str.c</span><br><span class="line"><span class="comment">// 此时已生成了 data2str.exe 可执行文件</span></span><br><span class="line"><span class="comment">// step.2 执行程序</span></span><br><span class="line">data2str.exe</span><br><span class="line"><span class="comment">// 此时便可输出执行结果</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2021/11/21/lJ8L3CPHa2txBp9.png" alt="data2str.png"></p>
-<h2 id="更多命令和编译汇编链接过程详见以下博客"><a href="#更多命令和编译汇编链接过程详见以下博客" class="headerlink" title="更多命令和编译汇编链接过程详见以下博客"></a>更多命令和编译汇编链接过程详见以下博客</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/-beyond/p/6636485.html">在Windows命令行中编译运行C/C++程序</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/chenmingjun/p/8280612.html"><mark>用gcc编译c语言程序以及其编译过程</mark></a></p>
-<p>如此便可在sublime下写小程序，然后直接用cmd编译执行啦~</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/19/C-Linux-%E6%95%B0%E5%AD%97%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/13th.jpg">
-      <meta itemprop="name" content="zhoushuang">
-      <meta itemprop="description" content="不要追求大而全，先做一个简单版本">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zhou Shuang">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/19/C-Linux-%E6%95%B0%E5%AD%97%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="post-title-link" itemprop="url">C | Linux | 数字转字符串</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-11-19 18:11:28" itemprop="dateCreated datePublished" datetime="2021-11-19T18:11:28+08:00">2021-11-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-11-21 18:41:28" itemprop="dateModified" datetime="2021-11-21T18:41:28+08:00">2021-11-21</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * data2str.c</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">time_t</span> timep;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">tm</span> *<span class="title">tp</span>;</span></span><br><span class="line"></span><br><span class="line">	time(&amp;timep);</span><br><span class="line">	tp = gmtime(&amp;timep);</span><br><span class="line">	<span class="keyword">char</span> cur_time[<span class="number">20</span>];</span><br><span class="line"></span><br><span class="line">	<span class="built_in">sprintf</span>(cur_time, <span class="string">&quot;%04d-%02d-%02d-%02d-%02d-%02d&quot;</span>, \</span><br><span class="line">            <span class="number">1900</span> + tp-&gt;tm_year, <span class="number">1</span> + tp-&gt;tm_mon, tp-&gt;tm_mday, \</span><br><span class="line">	        <span class="number">8</span> + tp-&gt;tm_hour, tp-&gt;tm_min, tp-&gt;tm_sec);</span><br><span class="line">	<span class="comment">// Linux 下将数字转换为字符串最好使用sprintf函数</span></span><br><span class="line">	<span class="comment">// 第一个参数为要写入字符串的地址，第二个参数为第三个参数的类型，第三个参数为要写入的数据</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;cur_time: %s\n&quot;</span>, cur_time);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/16/C-%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/13th.jpg">
-      <meta itemprop="name" content="zhoushuang">
-      <meta itemprop="description" content="不要追求大而全，先做一个简单版本">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zhou Shuang">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/16/C-%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4/" class="post-title-link" itemprop="url">C | 获取当前时间</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-11-16 16:32:34" itemprop="dateCreated datePublished" datetime="2021-11-16T16:32:34+08:00">2021-11-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-11-23 16:20:12" itemprop="dateModified" datetime="2021-11-23T16:20:12+08:00">2021-11-23</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">time_t</span> timep;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">tm</span> *<span class="title">tp</span>;</span></span><br><span class="line">	time(&amp;timep);</span><br><span class="line">	tp = gmtime(&amp;timep);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;当前时间：%04d-%02d-%02d-%02d-%02d-%02d\n&quot;</span>, \</span><br><span class="line">            <span class="number">1900</span> + tp-&gt;tm_year, <span class="number">1</span> + tp-&gt;tm_mon, tp-&gt;tm_mday, \</span><br><span class="line">	        <span class="number">8</span> + tp-&gt;tm_hour, tp-&gt;tm_min, tp-&gt;tm_sec);</span><br><span class="line">	<span class="comment">// %02d 表示输出占2位，不足2位前面补0</span></span><br><span class="line">    <span class="comment">// 年份从1900开始，所以前面要加1900</span></span><br><span class="line">	<span class="comment">// 月份范围是0~11，所以前面要＋1</span></span><br><span class="line">	<span class="comment">// 中国时间要＋8小时 </span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;从今年1月1日起至今的天数： %d\n&quot;</span>, tp-&gt;tm_yday);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -932,7 +909,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -941,7 +918,7 @@
         <span class="site-state-item-name">categories</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>

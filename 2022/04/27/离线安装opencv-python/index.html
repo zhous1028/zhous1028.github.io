@@ -20,17 +20,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="不要追求大而全，先做一个简单版本">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Zhou Shuang">
-<meta property="og:url" content="http://example.com/archives/2021/10/index.html">
+  <meta name="description" content="1、查看pip支持的文件名和版本 1pip debug --verbose  例如：我的平台支持cp39-cp39-manylinux_2_27_x86_64的版本 2、在清华镜像源找到对应版本opencv_python-3.4.11.45-cp39-cp39-manylinux2014_x86_64.whl并下载下来 3、将.whl文件放入某个目录，比如anaconda3&#x2F;pkgs&#x2F;，进入该目录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="离线安装opencv-python">
+<meta property="og:url" content="http://example.com/2022/04/27/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85opencv-python/index.html">
 <meta property="og:site_name" content="Zhou Shuang">
-<meta property="og:description" content="不要追求大而全，先做一个简单版本">
+<meta property="og:description" content="1、查看pip支持的文件名和版本 1pip debug --verbose  例如：我的平台支持cp39-cp39-manylinux_2_27_x86_64的版本 2、在清华镜像源找到对应版本opencv_python-3.4.11.45-cp39-cp39-manylinux2014_x86_64.whl并下载下来 3、将.whl文件放入某个目录，比如anaconda3&#x2F;pkgs&#x2F;，进入该目录">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-04-26T16:14:47.000Z">
+<meta property="article:modified_time" content="2022-04-26T16:51:36.877Z">
 <meta property="article:author" content="zhoushuang">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/archives/2021/10/">
+<link rel="canonical" href="http://example.com/2022/04/27/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85opencv-python/">
 
 
 <script id="page-configurations">
@@ -38,12 +40,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>Archive | Zhou Shuang</title>
+  <title>离线安装opencv-python | Zhou Shuang</title>
   
 
 
@@ -141,90 +143,85 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">Um..! 22 posts in total. Keep on posting.</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/27/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85opencv-python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/13th.jpg">
+      <meta itemprop="name" content="zhoushuang">
+      <meta itemprop="description" content="不要追求大而全，先做一个简单版本">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhou Shuang">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          离线安装opencv-python
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-04-27 00:14:47 / Modified: 00:51:36" itemprop="dateCreated datePublished" datetime="2022-04-27T00:14:47+08:00">2022-04-27</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
-    </div>
+        <p>1、查看pip支持的文件名和版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip debug --verbose</span><br></pre></td></tr></table></figure>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+<p>例如：我的平台支持<strong>cp39-cp39-manylinux_2_27_x86_64</strong>的版本</p>
+<p>2、在<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/opencv-python/">清华镜像源</a>找到对应版本<strong>opencv_python-3.4.11.45-cp39-cp39-manylinux2014_x86_64.whl</strong>并下载下来</p>
+<p>3、将.whl文件放入某个目录，比如anaconda3/pkgs/，进入该目录，执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install opencv_python-3.4.11.45-cp39-cp39-manylinux2014_x86_64.whl</span><br></pre></td></tr></table></figure>
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-10-07T10:37:33+08:00"
-              content="2021-10-07">
-          10-07
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/10/07/%E8%BD%AF%E8%80%83%E5%88%9D%E7%BA%A7-%E4%BF%A1%E5%8F%B7%E9%87%8F%E4%B8%8EPV%E6%93%8D%E4%BD%9C/" itemprop="url">
-            <span itemprop="name">软考初级-信号量与PV操作</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-10-06T13:24:28+08:00"
-              content="2021-10-06">
-          10-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/10/06/%E8%BD%AF%E8%80%83%E5%88%9D%E7%BA%A7/" itemprop="url">
-            <span itemprop="name">软考初级-原码、反码和补码</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-10-02T16:10:36+08:00"
-              content="2021-10-02">
-          10-02
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/10/02/%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E7%9B%B8%E5%85%B3/" itemprop="url">
-            <span itemprop="name">视频剪辑相关</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+<p>5、验证是否安装成功，进入python，import cv2，不报错说明安装成功</p>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/04/12/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/" rel="prev" title="代码规范（持续更新）">
+      <i class="fa fa-chevron-left"></i> 代码规范（持续更新）
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
