@@ -1,14 +1,9 @@
-# CI：Python 脚本无法输出中文 & 无法运行中文路径下的 Python 脚本
-
 ---
 layout: post
 title: "CI：Python 脚本无法输出中文 & 无法运行中文路径下的 Python 脚本"
 date: 2023-12-17-17:49:28 +0800
 categories: CI Python
-
 ---
-
-
 
 ## Python 脚本输出中文为乱码
 
