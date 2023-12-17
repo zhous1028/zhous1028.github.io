@@ -72,3 +72,57 @@ output
 
 ## 无法运行中文路径下的 Python 脚本
 
+### Reproduce
+
+Test_中文路径/test.py
+
+```
+print("测试运行中文路径下的Python脚本")
+```
+
+.gitlab-ci.yml
+
+```
+stages:
+    - test
+
+test_jog:
+    stage: test
+    tags:
+        - your_runner_tag
+    script:
+        - echo 测试中文路径
+        - python --version
+        - python Test_中文路径/test.py
+```
+
+output
+
+![chinese_path_err](https://raw.githubusercontent.com/zhous1028/zhous1028.github.io/main/imgs/2023-12-17/chinese_path_err.PNG)
+
+### Fix
+
+Add before "stages:" command "- CHCP 65001" in "before_script:"
+
+.gitlab-ci.yml
+
+```
+before_script:
+    - chcp 65001
+
+stages:
+    - test
+
+test_jog:
+    stage: test
+    tags:
+        - your_runner_tag
+    script:
+        - echo 测试中文路径
+        - python --version
+        - python Test_中文路径/test.py
+```
+
+output
+
+![chcp_65001](https://raw.githubusercontent.com/zhous1028/zhous1028.github.io/main/imgs/2023-12-17/65001.PNG)
