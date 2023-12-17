@@ -33,7 +33,7 @@ test_jog:
 
 output
 
-![Chinese Garbled](https://github.com/zhous1028/zhous1028.github.io/blob/main/imgs/ci_chinese_garbled.PNG)
+![Chinese Garbled](https://raw.githubusercontent.com/zhous1028/zhous1028.github.io/main/imgs/ci_chinese_garbled.PNG)
 
 ### Fix
 
