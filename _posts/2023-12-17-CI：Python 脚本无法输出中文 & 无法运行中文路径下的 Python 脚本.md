@@ -50,13 +50,13 @@ print("Test - 中文测试")
 
 output
 
-![](../imgs/console_encoding.PNG)
+![](https://raw.githubusercontent.com/zhous1028/zhous1028.github.io/main/imgs/console_encoding.PNG)
 
 #### 设置Runner服务器环境变量
 
 Environment Variables -> System variables -> New ->  PYTHONIOENCODING = UTF-8
 
-![pythonencoding](../imgs/pythonencoding.PNG)
+![pythonencoding](https://raw.githubusercontent.com/zhous1028/zhous1028.github.io/main/imgs/pythonencoding.PNG)
 
 #### 重启 Runner
 
@@ -66,7 +66,7 @@ gitlab-runner.exe restart
 
 output
 
-![output_utf8](../imgs/output_utf8.PNG)
+![output_utf8](https://raw.githubusercontent.com/zhous1028/zhous1028.github.io/main/imgs/output_utf8.PNG)
 
 
 
