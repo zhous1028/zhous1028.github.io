@@ -33,7 +33,7 @@ test_jog:
 
 output
 
-![Chinese Garbled](https://raw.githubusercontent.com/zhous1028/zhous1028.github.io/main/imgs/ci_chinese_garbled.PNG)
+![Chinese Garbled](https://raw.githubusercontent.com/zhous1028/zhous1028.github.io/main/imgs/2023-12-17/ci_chinese_garbled.PNG)
 
 ### Fix
 
@@ -50,13 +50,13 @@ print("Test - 中文测试")
 
 output
 
-![](https://raw.githubusercontent.com/zhous1028/zhous1028.github.io/main/imgs/console_encoding.PNG)
+![console_encoding](https://raw.githubusercontent.com/zhous1028/zhous1028.github.io/main/imgs/2023-12-17/console_encoding.PNG)
 
 #### 设置Runner服务器环境变量
 
 Environment Variables -> System variables -> New ->  PYTHONIOENCODING = UTF-8
 
-![pythonencoding](https://raw.githubusercontent.com/zhous1028/zhous1028.github.io/main/imgs/pythonencoding.PNG)
+![pythonencoding](https://raw.githubusercontent.com/zhous1028/zhous1028.github.io/main/imgs/2023-12-17/pythonencoding.PNG)
 
 #### 重启 Runner
 
@@ -66,7 +66,7 @@ gitlab-runner.exe restart
 
 output
 
-![output_utf8](https://raw.githubusercontent.com/zhous1028/zhous1028.github.io/main/imgs/output_utf8.PNG)
+![output_utf8](https://raw.githubusercontent.com/zhous1028/zhous1028.github.io/main/imgs/2023-12-17/output_utf8.PNG)
 
 
 
